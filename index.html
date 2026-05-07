@@ -756,7 +756,7 @@
 <body>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/917355592533" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+<a href="https://wa.me/919999999999" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
   <svg width="28" height="28" viewBox="0 0 32 32" fill="white"><path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.7A13 13 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 24a10.96 10.96 0 0 1-5.6-1.54l-.4-.24-4.04 1.06 1.07-3.94-.26-.41A10.94 10.94 0 0 1 5.06 16C5.06 9.96 9.96 5.06 16 5.06S26.94 9.96 26.94 16 22.04 27 16 27zm5.98-8.14c-.33-.16-1.93-.95-2.23-1.06-.3-.1-.52-.16-.74.16s-.85 1.06-1.04 1.28c-.19.22-.38.25-.7.08-.33-.16-1.38-.5-2.63-1.6-.97-.87-1.63-1.94-1.82-2.27-.19-.32-.02-.5.14-.66l.47-.54c.12-.14.16-.25.25-.42.08-.16.04-.31-.02-.44-.08-.13-.74-1.77-1.01-2.42-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4s-1.14 1.12-1.14 2.72 1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.56 4.91.78.33 1.38.53 1.86.68.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.14-.29-.22-.62-.38z"/></svg>
 </a>
 
@@ -777,7 +777,7 @@
 <nav id="navbar">
   <div class="nav-logo">
     <!-- FIXED LOGO URL - working Google Drive thumbnail -->
-    <img src="https://drive.google.com/thumbnail?id=1Rj7PXlDRIRidVFYlVxK6pkW6HHTfcBdE&sz=w2000" alt="GM Overseas Logo" />
+    <img src="https://drive.google.com/thumbnail?id=1sd3VVviLQgcB5o3CREm_jcGwdttGbj4D&sz=w2000" alt="GM Overseas Logo" />
     <div class="nav-logo-text">
       <div class="nav-logo-name"><span>GM</span> OVERSEAS</div>
       <div class="nav-logo-tag">Your Destination, Our Commitment</div>
@@ -1426,28 +1426,71 @@
         <div style="background:var(--white);padding:44px;border-top:3px solid var(--gold)">
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--navy);margin-bottom:28px">Request a Free Consultation</h3>
           <!-- WORKING FORMSPREE FORM WITH ENDPOINT -->
-   <div class="container">
-  <h1>FormSubmit Demo</h1>
-  <form target="_blank" action="https://formsubmit.co/malek.cityofchicago@gmail.com" method="POST">
+          
+      
+<form action="https://formsubmit.co/info@gmoverseas.in" method="POST">
+  <!-- Optional: disable CAPTCHA and set redirect -->
+  <input type="hidden" name="_captcha" value="false">
+  <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html"> -->
+
+  <div class="form-row">
     <div class="form-group">
-      <div class="form-row">
-        <div class="col">
-          <input type="text" name="name" class="form-control" placeholder="Full Name" required>
-        </div>
-        <div class="col">
-          <input type="text" name="Phone" class="form-control" placeholder="WhatsApp/Phone" required>
-        </div>
-        <div class="col">
-          <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+      <label>Full Name</label>
+      <input type="text" name="name" placeholder="Your full name" required />
+    </div>
+    <div class="form-group">
+      <label>Phone / WhatsApp</label>
+      <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email Address</label>
+    <input type="email" name="email" placeholder="your@email.com" required />
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Visa Type</label>
+      <select name="visa_type" required>
+        <option value="">Select visa type</option>
+        <option>Schengen Tourist Visa</option>
+        <option>Business Visa</option>
+        <option>Student Admission to Europe</option>
+        <option>Student Internship Visa</option>
+        <option>Work Permit / D-Visa</option>
+        <option>Manpower – Hire from India</option>
+        <option>Manpower – Find Job in Europe</option>
+        <option>Family Visa</option>
+        <option>Long Stay / Settlement</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Destination Country</label>
+      <select name="country" required>
+        <option value="">Select country</option>
+        <option>Germany</option>
+        <option>France</option>
+        <option>Italy</option>
+        <option>Netherlands</option>
+        <option>Spain</option>
+        <option>Switzerland</option>
+        <option>United Kingdom</option>
+        <option>Portugal</option>
+        <option>Other Europe</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Message (Optional)</label>
+    <textarea name="message" placeholder="Tell us about your travel plans or any concerns..."></textarea>
+  </div>
+  <button type="submit" class="form-submit">Send Consultation Request →</button>
+        </form>
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
-  </form>
-</div>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
