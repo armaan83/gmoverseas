@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GM Overseas – Your Destination, Our Commitment</title>
+  <meta name="description" content="GM Overseas – India's trusted immigration consultancy for Schengen & European visas, student admissions, and work permits. Based in India, specializing in Europe.">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --navy: #0d1b3e;
+      --navy-mid: #162347;
+      --navy-light: #1e3060;
+      --gold: #b8963e;
+      --gold-light: #d4af5a;
+      --gold-pale: #f0e0b0;
+      --cream: #faf8f3;
+      --white: #ffffff;
+      --text-dark: #0d1b3e;
+      --text-muted: #5a6a8a;
+      --border: rgba(184,150,62,0.2);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Jost', sans-serif; color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ===== CUSTOM SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 18px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(13,27,62,0.97);
+      backdrop-filter: blur(12px);
+      padding: 12px 5%;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav-logo img {
+      height: 52px; width: 52px; object-fit: contain;
+      border-radius: 50%;
+      background: white;
+      padding: 4px;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column;
+    }
+    .nav-logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .nav-logo-name span { color: var(--gold-light); }
+    .nav-logo-tag {
+      font-size: 0.6rem; letter-spacing: 3px;
+      color: var(--gold-pale); text-transform: uppercase;
+      margin-top: 3px;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 36px;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      position: relative; padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--gold-light);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 10px 24px !important;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      letter-spacing: 1.5px !important;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 26px; height: 2px; background: white; display: block; transition: all 0.3s; }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative; height: 100vh; min-height: 680px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-parallax-bg {
+      position: absolute; inset: -60px;
+      background: 
+        linear-gradient(165deg, rgba(13,27,62,0.92) 0%, rgba(13,27,62,0.75) 50%, rgba(13,27,62,0.88) 100%),
+        url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1800&q=80') center/cover no-repeat;
+      will-change: transform;
+      z-index: 0;
+    }
+    /* Animated star dots */
+    .hero-stars {
+      position: absolute; inset: 0; z-index: 1; overflow: hidden;
+    }
+    .star {
+      position: absolute; background: var(--gold-light);
+      border-radius: 50%; animation: twinkle 3s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.3); }
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 20px;
+      max-width: 860px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 28px;
+      opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; width: 40px; height: 1px; background: var(--gold);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300; color: var(--white); line-height: 1.1;
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.9s 0.5s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      color: rgba(255,255,255,0.75); font-weight: 300;
+      line-height: 1.8; max-width: 600px; margin: 0 auto 40px;
+      letter-spacing: 0.5px;
+      opacity: 0; animation: fadeUp 0.9s 0.7s forwards;
+    }
+    .hero-btns {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s 0.9s forwards;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 15px 38px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      border: none; cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.4s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(184,150,62,0.4); }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 36px;
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 2px; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0; animation: fadeIn 1s 1.5s forwards;
+    }
+    .scroll-indicator span {
+      font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{ transform: scaleY(1); opacity:1} 50%{ transform:scaleY(0.5); opacity:0.4} }
+
+    /* Hero stats bar */
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 3;
+      background: rgba(13,27,62,0.9);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(184,150,62,0.3);
+      display: flex; justify-content: center;
+      padding: 20px 5%;
+      opacity: 0; animation: fadeIn 1s 1.2s forwards;
+    }
+    .stats-inner {
+      display: flex; gap: 0; max-width: 900px; width: 100%;
+    }
+    .stat-item {
+      flex: 1; text-align: center; padding: 8px 20px;
+      border-right: 1px solid rgba(184,150,62,0.2);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); margin-top: 4px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ===== SECTION UTILITY ===== */
+    .section { padding: 100px 5%; }
+    .section-alt { background: var(--navy); }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.68rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: ''; width: 30px; height: 1px; background: var(--gold);
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400; line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .title-dark { color: var(--navy); }
+    .title-light { color: var(--white); }
+    .section-desc {
+      font-size: 1rem; line-height: 1.8; color: var(--text-muted);
+      max-width: 520px; font-weight: 300;
+    }
+    .section-desc-light { color: rgba(255,255,255,0.65); }
+    .gold-line {
+      width: 50px; height: 2px; background: var(--gold);
+      margin: 20px 0 40px;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    #about { background: var(--cream); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap img {
+      width: 100%; height: 480px; object-fit: cover;
+      border-radius: 2px;
+    }
+    .about-img-badge {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--navy); color: var(--white);
+      padding: 28px 32px; text-align: center;
+      border: 3px solid var(--gold);
+    }
+    .about-img-badge .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; color: var(--gold-light); font-weight: 700;
+      line-height: 1;
+    }
+    .about-img-badge .txt {
+      font-size: 0.68rem; letter-spacing: 2px;
+      text-transform: uppercase; color: rgba(255,255,255,0.7);
+      margin-top: 4px;
+    }
+    .about-img-border {
+      position: absolute; top: -16px; left: -16px;
+      width: 80px; height: 80px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+    .about-features {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      margin-top: 40px;
+    }
+    .about-feature {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .feature-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: rgba(184,150,62,0.1);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .feature-title { font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .feature-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ===== SERVICES ===== */
+    #services { background: var(--navy); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+      margin-top: 60px;
+    }
+    /* Student spotlight section */
+    #students { background: var(--cream); }
+    .students-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      margin-top: 60px;
+    }
+    .student-card {
+      background: var(--white);
+      border-top: 4px solid var(--gold);
+      padding: 48px 40px;
+      position: relative; overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .student-card:hover { box-shadow: 0 24px 60px rgba(13,27,62,0.12); transform: translateY(-6px); }
+    .student-card-icon {
+      font-size: 3rem; margin-bottom: 20px;
+    }
+    .student-card-tag {
+      display: inline-block; font-size: 0.65rem; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+      background: rgba(184,150,62,0.08); border: 1px solid var(--border);
+      padding: 5px 14px; border-radius: 2px; margin-bottom: 16px;
+    }
+    .student-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; color: var(--navy); font-weight: 600;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .student-card p {
+      font-size: 0.88rem; line-height: 1.9; color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .student-features {
+      display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px;
+    }
+    .student-feature {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.82rem; color: var(--text-dark);
+    }
+    .student-feature::before {
+      content: '✦'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .student-card-bg-num {
+      position: absolute; right: -10px; bottom: -20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 9rem; font-weight: 700;
+      color: rgba(184,150,62,0.05); line-height: 1; pointer-events: none;
+    }
+    .service-card {
+      background: var(--navy-mid);
+      padding: 48px 36px;
+      position: relative; overflow: hidden;
+      transition: all 0.4s;
+      cursor: default;
+      border: 1px solid rgba(184,150,62,0.1);
+    }
+    .service-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .service-card:hover { background: var(--navy-light); transform: translateY(-6px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 700;
+      color: rgba(184,150,62,0.12);
+      position: absolute; top: 20px; right: 24px;
+      line-height: 1;
+    }
+    .service-icon { font-size: 2rem; margin-bottom: 20px; }
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--white);
+      margin-bottom: 14px; line-height: 1.3;
+    }
+    .service-desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.8; }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 24px; font-size: 0.72rem; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+      transition: gap 0.3s;
+    }
+    .service-card:hover .service-link { gap: 14px; }
+    
+
+    /* ===== COUNTRIES ===== */
+    #countries { background: var(--cream); }
+    .countries-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: end; margin-bottom: 60px;
+    }
+    .countries-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .country-card {
+      position: relative; overflow: hidden;
+      border-radius: 2px; cursor: pointer;
+      height: 220px;
+    }
+    .country-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .country-card:hover img { transform: scale(1.08); }
+    .country-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,27,62,0.9) 0%, rgba(13,27,62,0.2) 60%);
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 20px;
+      transition: background 0.4s;
+    }
+    .country-card:hover .country-overlay {
+      background: linear-gradient(to top, rgba(13,27,62,0.95) 0%, rgba(13,27,62,0.4) 60%);
+    }
+    .country-flag { font-size: 1.6rem; margin-bottom: 6px; }
+    .country-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--white);
+    }
+    .country-tag {
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold-light); margin-top: 4px;
+    }
+
+    /* ===== PROCESS ===== */
+    #process { background: var(--navy); padding: 100px 5%; }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; position: relative; margin-top: 60px;
+    }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 32px; left: 10%; right: 10%;
+      height: 1px; background: rgba(184,150,62,0.3);
+      z-index: 0;
+    }
+    .process-step {
+      text-align: center; padding: 0 12px; position: relative; z-index: 1;
+    }
+    .step-circle {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: var(--navy-mid);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--gold-light);
+      transition: all 0.3s;
+    }
+    .process-step:hover .step-circle {
+      background: var(--gold); color: var(--navy);
+    }
+    .step-title {
+      font-size: 0.82rem; font-weight: 600; color: var(--white);
+      margin-bottom: 8px; letter-spacing: 0.5px;
+    }
+    .step-desc { font-size: 0.75rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials { background: var(--cream); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+      margin-top: 60px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      padding: 40px 32px;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+    }
+    .testimonial-card:hover {
+      border-bottom-color: var(--gold);
+      box-shadow: 0 20px 50px rgba(13,27,62,0.1);
+      transform: translateY(-4px);
+    }
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; color: rgba(184,150,62,0.15);
+      line-height: 0.6; margin-bottom: 24px;
+    }
+    .testimonial-text {
+      font-size: 0.9rem; line-height: 1.8;
+      color: var(--text-muted); margin-bottom: 28px;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--navy);
+    }
+    .author-name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+    .author-dest { font-size: 0.72rem; color: var(--gold); letter-spacing: 1px; }
+    .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 6px; }
+
+    /* ===== WHY US ===== */
+    #why { background: var(--navy); }
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+      align-items: center;
+    }
+    .why-list { margin-top: 40px; }
+    .why-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px 0; border-bottom: 1px solid rgba(184,150,62,0.15);
+    }
+    .why-item:first-child { padding-top: 0; }
+    .why-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; color: var(--gold); font-weight: 700;
+      flex-shrink: 0; width: 36px; line-height: 1;
+    }
+    .why-title { font-weight: 600; color: var(--white); margin-bottom: 6px; font-size: 0.95rem; }
+    .why-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .why-visual {
+      position: relative;
+    }
+    .why-visual img {
+      width: 100%; height: 500px; object-fit: cover;
+    }
+    .why-badge {
+      position: absolute; top: -20px; left: -20px;
+      background: var(--gold);
+      width: 120px; height: 120px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .why-badge-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1;
+    }
+    .why-badge-txt { font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); font-weight: 600; }
+
+    /* ===== CTA BANNER ===== */
+    #cta-banner {
+      position: relative; overflow: hidden;
+      padding: 100px 5%;
+      background: 
+        linear-gradient(135deg, rgba(13,27,62,0.95) 0%, rgba(22,35,71,0.9) 100%),
+        url('https://images.unsplash.com/photo-1520608421671-2a4e1e9e1e23?w=1400&q=80') center/cover;
+      background-attachment: fixed;
+      text-align: center;
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .cta-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white); font-weight: 300; line-height: 1.3; margin-bottom: 20px;
+    }
+    .cta-inner p {
+      color: rgba(255,255,255,0.7); margin-bottom: 40px;
+      font-size: 1rem; line-height: 1.8;
+    }
+    .cta-inner em { font-style: italic; color: var(--gold-light); }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--cream); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px;
+    }
+    .contact-info-item {
+      display: flex; gap: 16px; margin-bottom: 32px; align-items: flex-start;
+    }
+    .contact-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: var(--navy); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .contact-label { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .contact-value { font-size: 0.95rem; color: var(--text-dark); font-weight: 400; }
+    /* Form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-group label { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dark); font-weight: 500; }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 14px 16px; border: 1px solid rgba(13,27,62,0.15);
+      background: var(--white); color: var(--text-dark);
+      font-family: 'Jost', sans-serif; font-size: 0.9rem;
+      outline: none; border-radius: 2px;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      width: 100%; padding: 16px;
+      background: var(--navy); color: var(--white);
+      border: none; font-family: 'Jost', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      border-radius: 2px;
+    }
+    .form-submit:hover { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #080f20;
+      padding: 60px 5% 30px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(184,150,62,0.2);
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.5); font-size: 0.82rem; line-height: 1.8;
+      margin-top: 16px; max-width: 260px;
+    }
+    .footer-title {
+      font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px; font-weight: 500;
+    }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.55); font-size: 0.85rem;
+      transition: color 0.3s; display: flex; align-items: center; gap: 8px;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-links a::before { content: '→'; font-size: 0.7rem; color: var(--gold); }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .social-btn {
+      width: 38px; height: 38px; border: 1px solid rgba(184,150,62,0.3);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6); font-size: 0.9rem;
+      transition: all 0.3s; border-radius: 2px;
+    }
+    .social-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 28px; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+    .footer-bottom span { color: var(--gold); }
+
+    /* ===== FLOATING WHATSAPP ===== */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 56px; height: 56px; background: #25d366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; color: white;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: pulseWA 2.5s infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37,211,102,0.5); }
+    @keyframes pulseWA {
+      0%,100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 6px 30px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.1); }
+    }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--navy); z-index: 999; flex-direction: column;
+      align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white); font-size: 1.3rem;
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      letter-spacing: 2px;
+    }
+    .mobile-menu a:hover { color: var(--gold-light); }
+    .mobile-close {
+      position: absolute; top: 24px; right: 5%;
+      font-size: 2rem; color: white; cursor: pointer; background: none; border: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .countries-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .why-grid, .contact-grid, .countries-intro { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-badge { right: 0; bottom: -20px; }
+      .services-grid, .testimonials-grid, .students-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .hero-stats .stats-inner { flex-wrap: wrap; }
+      .stat-item { flex: 1 1 45%; border-right: none; border-bottom: 1px solid rgba(184,150,62,0.2); }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .countries-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/393508700594" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 32 32" fill="white"><path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.7A13 13 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 24a10.96 10.96 0 0 1-5.6-1.54l-.4-.24-4.04 1.06 1.07-3.94-.26-.41A10.94 10.94 0 0 1 5.06 16C5.06 9.96 9.96 5.06 16 5.06S26.94 9.96 26.94 16 22.04 27 16 27zm5.98-8.14c-.33-.16-1.93-.95-2.23-1.06-.3-.1-.52-.16-.74.16s-.85 1.06-1.04 1.28c-.19.22-.38.25-.7.08-.33-.16-1.38-.5-2.63-1.6-.97-.87-1.63-1.94-1.82-2.27-.19-.32-.02-.5.14-.66l.47-.54c.12-.14.16-.25.25-.42.08-.16.04-.31-.02-.44-.08-.13-.74-1.77-1.01-2.42-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4s-1.14 1.12-1.14 2.72 1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.56 4.91.78.33 1.38.53 1.86.68.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.14-.29-.22-.62-.38z"/></svg>
+</a>
+
+<!-- MOBILE MENU -->
+<nav class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#manpower" onclick="closeMobileMenu()">Manpower</a>
+  <a href="#students" onclick="closeMobileMenu()">Students</a>
+  <a href="#countries" onclick="closeMobileMenu()">Countries</a>
+  <a href="#process" onclick="closeMobileMenu()">Process</a>
+  <a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</nav>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <!-- FIXED LOGO URL - working Google Drive thumbnail -->
+    <img src="https://drive.google.com/thumbnail?id=1Rj7PXlDRIRidVFYlVxK6pkW6HHTfcBdE&sz=w2000" alt="GM Overseas Logo" />
+    <div class="nav-logo-text">
+      <div class="nav-logo-name"><span>GM</span> OVERSEAS</div>
+      <div class="nav-logo-tag">Your Destination, Our Commitment</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#manpower">Manpower</a></li>
+    <li><a href="#students">Students</a></li>
+    <li><a href="#countries">Countries</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
+  </ul>
+  <div class="hamburger" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-parallax-bg" id="parallaxBg"></div>
+  <div class="hero-stars" id="heroStars"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">India's Trusted European Visa Experts</div>
+    <h1 class="hero-title">
+      Your Gateway to<br><em>Europe Begins Here</em>
+    </h1>
+    <p class="hero-subtitle">
+      Expert Schengen &amp; European visa consultancy from India. We turn your European dream into a journey — with precision, care, and decades of experience.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get Free Consultation</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="hero-stats">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">387+</div>
+        <div class="stat-label">Visas Processed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">26+</div>
+        <div class="stat-label">European Countries</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Success Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <div class="about-img-border"></div>
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="GM Overseas Team" />
+        <div class="about-img-badge">
+          <div class="num">10+</div>
+          <div class="txt">Years of Trust</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title title-dark">India's Premier<br>Europe Visa Consultancy</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc">
+          GM Overseas is a leading immigration and manpower consultancy based in India, dedicated to helping individuals and businesses navigate Europe. From Schengen visas and student admissions to recruiting skilled Indian talent for European employers — we make Europe accessible.
+        </p>
+        <p class="section-desc" style="margin-top:16px;">
+          Our team of certified consultants brings in-depth knowledge of European immigration laws, embassy requirements, and documentation to ensure every application stands the best chance of approval.
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="feature-icon">🛂</div>
+            <div>
+              <div class="feature-title">Certified Consultants</div>
+              <div class="feature-text">Licensed professionals with EU immigration expertise</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">📋</div>
+            <div>
+              <div class="feature-title">End-to-End Support</div>
+              <div class="feature-text">From documentation to interview preparation</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">⚡</div>
+            <div>
+              <div class="feature-title">Fast Processing</div>
+              <div class="feature-text">Streamlined process for quick approvals</div>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="feature-icon">🌐</div>
+            <div>
+              <div class="feature-title">26+ Countries</div>
+              <div class="feature-text">All Schengen & major European nations covered</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-alt" id="services">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-label" style="justify-content:center">What We Offer</div>
+      <h2 class="section-title title-light">Our Expert Services</h2>
+      <div class="gold-line" style="margin:20px auto 0"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-icon">🛂</div>
+        <h3 class="service-title">Schengen Tourist Visa</h3>
+        <p class="service-desc">Plan your European adventure with confidence. We handle all documentation, appointment booking, cover letters, and itinerary planning for Schengen tourist visas from India.</p>
+        <a href="https://www.gm-overseas.com/schengen-tourist-visa.html" class="service-link">Learn More →</a>
+        </div>
+      <div class="service-card reveal">
+        <div class="service-number">02</div>
+        <div class="service-icon">💼</div>
+        <h3 class="service-title">Business Visa Europe</h3>
+        <p class="service-desc">Attend conferences, meet clients, or explore business opportunities across Europe. We specialize in business Schengen visas with strong documentation support.</p>
+        <a href="https://www.gm-overseas.com/business-visa-europe.html" class="service-link">Learn More →</a>
+        </div>
+      <div class="service-card reveal">
+        <div class="service-number">03</div>
+        <div class="service-icon">🎓</div>
+        <h3 class="service-title">Student Admissions</h3>
+        <p class="service-desc">University selection, application filing, and student visa processing for Germany, France, Italy, Netherlands &amp; more. We turn your European education dream into reality.</p>
+        <a href="https://www.gm-overseas.com/student-visa-europe.html" class="service-link">Learn More →</a>
+        
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-icon">🧑‍💻</div>
+        <h3 class="service-title">Student Internship Visa</h3>
+        <p class="service-desc">Gain hands-on European work experience. We assist Indian students in securing internship placements and processing the correct visa &amp; permit for internships across Europe.</p>
+        <a href="https://www.gm-overseas.com/student-internship-visa.html" class="service-link">Learn More →</a>
+        
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">05</div>
+        <div class="service-icon">🏢</div>
+        <h3 class="service-title">Work Permit &amp; D-Visa</h3>
+        <p class="service-desc">Seeking employment in Europe? We assist with national D-Visas, work permits, and long-stay applications for professionals relocating to European countries.</p>
+        <a href="https://www.gm-overseas.com/work-permit-europe.html" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">06</div>
+        <div class="service-icon">👨‍👩‍👧</div>
+        <h3 class="service-title">Family Reunification</h3>
+        <p class="service-desc">Reunite with your family in Europe. We handle family visit visas, dependent visas, and family reunification applications for all major European countries.</p>
+       <a href="https://www.gm-overseas.com/family-reunification-visa.html" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">07</div>
+        <div class="service-icon">📞</div>
+        <h3 class="service-title">Document &amp; Appeal Support</h3>
+        <p class="service-desc">Visa refused? We offer expert document review, rejection analysis, and appeal filing services to help you reapply with the strongest possible case.</p>
+        <a href="https://www.gm-overseas.com/visa-refusal-appeal.html" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">08</div>
+        <div class="service-icon">🌍</div>
+        <h3 class="service-title">Long Stay &amp; Settlement</h3>
+        <p class="service-desc">Planning to settle in Europe? We guide you through long-stay national visas, residence permits, and permanent residency pathways across European nations.</p>
+        <a href="https://www.gm-overseas.com/long-stay-settlement-europe.html" class="service-link">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANPOWER / RECRUITMENT SECTION -->
+<section class="section" id="manpower" style="background:var(--navy)">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <div class="section-label" style="color:var(--gold)">Manpower &amp; Recruitment</div>
+        <h2 class="section-title title-light">We Connect Indian<br><em style="font-style:italic;color:var(--gold-light)">Talent with Europe</em></h2>
+        <div class="gold-line"></div>
+        <p class="section-desc section-desc-light">
+          GM Overseas is a reputed manpower consultancy that bridges the gap between skilled Indian professionals and European employers. We help companies across Europe find, screen, and hire top Indian talent — across industries, roles, and skill levels.
+        </p>
+        <p class="section-desc section-desc-light" style="margin-top:16px;">
+          Whether you're a European employer looking for verified candidates or an Indian professional seeking a career abroad, we handle every step — from talent sourcing and documentation to work visa processing and onboarding support.
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px">
+          <a href="#contact" class="btn-primary">Hire from India</a>
+          <a href="#contact" class="btn-outline">Find Jobs in Europe</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <!-- Recruitment feature cards -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,150,62,0.2);padding:28px 24px;transition:background 0.3s" onmouseover="this.style.background='rgba(184,150,62,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+            <div style="font-size:1.8rem;margin-bottom:12px">🏭</div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:6px">Skilled &amp; Semi-Skilled</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.6">Technicians, operators, welders, electricians, construction workers &amp; more</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,150,62,0.2);padding:28px 24px;transition:background 0.3s" onmouseover="this.style.background='rgba(184,150,62,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+            <div style="font-size:1.8rem;margin-bottom:12px">💻</div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:6px">IT &amp; Tech Professionals</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.6">Software engineers, developers, data analysts &amp; IT specialists for European firms</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,150,62,0.2);padding:28px 24px;transition:background 0.3s" onmouseover="this.style.background='rgba(184,150,62,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+            <div style="font-size:1.8rem;margin-bottom:12px">🏥</div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:6px">Healthcare &amp; Nursing</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.6">Nurses, caregivers, paramedics &amp; healthcare professionals for EU hospitals &amp; care homes</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,150,62,0.2);padding:28px 24px;transition:background 0.3s" onmouseover="this.style.background='rgba(184,150,62,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+            <div style="font-size:1.8rem;margin-bottom:12px">🍽️</div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:6px">Hospitality &amp; Catering</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.6">Chefs, hotel staff, restaurant managers &amp; hospitality professionals for Europe</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,150,62,0.2);padding:28px 24px;transition:background 0.3s" onmouseover="this.style.background='rgba(184,150,62,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+            <div style="font-size:1.8rem;margin-bottom:12px">🔧</div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:6px">Engineering &amp; Manufacturing</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.6">Mechanical, civil &amp; industrial engineers for European manufacturing companies</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(184,150,62,0.2);padding:28px 24px;transition:background 0.3s" onmouseover="this.style.background='rgba(184,150,62,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+            <div style="font-size:1.8rem;margin-bottom:12px">📊</div>
+            <div style="font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:6px">Finance &amp; Management</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.6">Accountants, analysts, HR &amp; operations managers for European businesses</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How Recruitment Works -->
+    <div class="reveal" style="margin-top:72px">
+      <div style="text-align:center;margin-bottom:48px">
+        <div class="section-label" style="justify-content:center;color:var(--gold)">Our Recruitment Process</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--white);font-weight:400">End-to-End Talent Placement</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative">
+        <div style="position:absolute;top:28px;left:8%;right:8%;height:1px;background:rgba(184,150,62,0.25);z-index:0"></div>
+        <div class="process-step" style="position:relative;z-index:1">
+          <div class="step-circle">1</div>
+          <div class="step-title">Requirement Analysis</div>
+          <div class="step-desc">Understand employer's job roles, skills &amp; timelines</div>
+        </div>
+        <div class="process-step" style="position:relative;z-index:1">
+          <div class="step-circle">2</div>
+          <div class="step-title">Talent Sourcing</div>
+          <div class="step-desc">Identify &amp; screen the best Indian candidates</div>
+        </div>
+        <div class="process-step" style="position:relative;z-index:1">
+          <div class="step-circle">3</div>
+          <div class="step-title">Interview Coordination</div>
+          <div class="step-desc">Arrange interviews between employer &amp; shortlisted candidates</div>
+        </div>
+        <div class="process-step" style="position:relative;z-index:1">
+          <div class="step-circle">4</div>
+          <div class="step-title">Offer &amp; Contract</div>
+          <div class="step-desc">Facilitate job offer, contract signing &amp; legal review</div>
+        </div>
+        <div class="process-step" style="position:relative;z-index:1">
+          <div class="step-circle">5</div>
+          <div class="step-title">Visa &amp; Work Permit</div>
+          <div class="step-desc">Handle all work permit &amp; visa documentation for Europe</div>
+        </div>
+        <div class="process-step" style="position:relative;z-index:1">
+          <div class="step-circle">6</div>
+          <div class="step-title">Onboarding 🎉</div>
+          <div class="step-desc">Pre-departure briefing &amp; relocation support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manpower Stats -->
+    <div class="reveal" style="margin-top:56px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;border:1px solid rgba(184,150,62,0.25);padding:36px 40px">
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">214+</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px">Candidates Placed</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">50+</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px">European Employers</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">12+</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px">Industry Sectors</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">10+</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px">Years Recruiting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT SECTION -->
+<section class="section" id="students">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-label" style="justify-content:center">For Students</div>
+      <h2 class="section-title title-dark">Study &amp; Intern in <em style="font-style:italic;color:var(--gold)">Europe</em></h2>
+      <div class="gold-line" style="margin:20px auto 40px"></div>
+      <p class="section-desc" style="max-width:640px;margin:0 auto 0">GM Overseas is a dedicated partner for Indian students aspiring to study or intern at top European universities and companies. From course selection to visa approval — we are with you every step.</p>
+    </div>
+    <div class="students-grid">
+      <!-- Student Admissions Card -->
+      <div class="student-card reveal-left">
+        <div class="student-card-bg-num">01</div>
+        <div class="student-card-icon">🎓</div>
+        <div class="student-card-tag">Higher Education</div>
+        <h3>Student Admissions<br>to Europe</h3>
+        <p>We help Indian students gain admission to top-ranked universities across Germany, France, Italy, the Netherlands, Spain, and more. Our end-to-end service covers everything from shortlisting programs to getting your student visa stamped.</p>
+        <div class="student-features">
+          <div class="student-feature">University &amp; course shortlisting based on your profile &amp; budget</div>
+          <div class="student-feature">SOP (Statement of Purpose) &amp; LOR guidance</div>
+          <div class="student-feature">Application filing &amp; admission follow-ups with universities</div>
+          <div class="student-feature">Student visa (Type D) documentation &amp; filing</div>
+          <div class="student-feature">Pre-departure briefing: accommodation, banking &amp; travel tips</div>
+          <div class="student-feature">Scholarship &amp; funding guidance for European programs</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="display:inline-block">Apply for Admission →</a>
+      </div>
+      <!-- Internship Card -->
+      <div class="student-card reveal-right">
+        <div class="student-card-bg-num">02</div>
+        <div class="student-card-icon">🧑‍💻</div>
+        <div class="student-card-tag">Professional Experience</div>
+        <h3>Student Internship<br>in Europe</h3>
+        <p>An internship in Europe is a life-changing opportunity. GM Overseas assists Indian students and recent graduates in securing internship placements at European companies and processing the correct visa &amp; work authorizations required.</p>
+        <div class="student-features">
+          <div class="student-feature">Internship placement assistance in Germany, France, Netherlands &amp; more</div>
+          <div class="student-feature">Internship visa &amp; work permit documentation support</div>
+          <div class="student-feature">Cover letter, CV formatting &amp; interview preparation</div>
+          <div class="student-feature">Host company verification &amp; agreement review</div>
+          <div class="student-feature">Guidance on paid vs. unpaid internship visa requirements</div>
+          <div class="student-feature">Support for post-internship visa extension or job seeker visa</div>
+        </div>
+        <a href="#contact" class="btn-primary" style="display:inline-block">Apply for Internship →</a>
+      </div>
+    </div>
+    <!-- Student Stats Banner -->
+    <div class="reveal" style="margin-top:48px;background:var(--navy);padding:40px 48px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;border-top:3px solid var(--gold)">
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">146+</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:6px">Students Placed</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">15+</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:6px">Partner Universities</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">8</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:6px">Countries for Internships</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--gold-light);font-weight:700;line-height:1">94%</div>
+        <div style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:6px">Admission Success Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section class="section" id="countries">
+  <div class="container">
+    <div class="countries-intro">
+      <div class="reveal-left">
+        <div class="section-label">Where We Work</div>
+        <h2 class="section-title title-dark">European Countries<br>We Specialize In</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc">From the Schengen zone to the UK, Norway, and beyond — GM Overseas covers every major European destination Indians dream of visiting, studying in, or working at.</p>
+      </div>
+      <div class="reveal-right" style="display:flex;align-items:flex-end;justify-content:flex-end">
+        <a href="#contact" class="btn-primary">Check Visa Eligibility</a>
+      </div>
+    </div>
+    <div class="countries-grid">
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80" alt="Germany" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇩🇪</div>
+          <div class="country-name">Germany</div>
+          <div class="country-tag">Student · Work · Business</div>
+        </div>
+      </div>
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=600&q=80" alt="France" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇫🇷</div>
+          <div class="country-name">France</div>
+          <div class="country-tag">Tourist · Student · Business</div>
+        </div>
+      </div>
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600&q=80" alt="Italy" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇮🇹</div>
+          <div class="country-name">Italy</div>
+          <div class="country-tag">Tourist · Business · Work</div>
+        </div>
+      </div>
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1584003564911-a4d1eb20e5c4?w=600&q=80" alt="Netherlands" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇳🇱</div>
+          <div class="country-name">Netherlands</div>
+          <div class="country-tag">Student · Work · Tourist</div>
+        </div>
+      </div>
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Spain" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇪🇸</div>
+          <div class="country-name">Spain</div>
+          <div class="country-tag">Tourist · Business · Long Stay</div>
+        </div>
+      </div>
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1555990793-da11153b2473?w=600&q=80" alt="Switzerland" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇨🇭</div>
+          <div class="country-name">Switzerland</div>
+          <div class="country-tag">Tourist · Business</div>
+        </div>
+      </div>
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80" alt="UK" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇬🇧</div>
+          <div class="country-name">United Kingdom</div>
+          <div class="country-tag">Student · Work · Tourist</div>
+        </div>
+      </div>
+      <div class="country-card reveal">
+        <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=600&q=80" alt="Portugal" loading="lazy"/>
+        <div class="country-overlay">
+          <div class="country-flag">🇵🇹</div>
+          <div class="country-name">Portugal</div>
+          <div class="country-tag">Tourist · Golden Visa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-label" style="justify-content:center">How It Works</div>
+      <h2 class="section-title title-light">Simple 5-Step Process</h2>
+      <div class="gold-line" style="margin:20px auto 0"></div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-circle">1</div>
+        <div class="step-title">Free Consultation</div>
+        <div class="step-desc">Discuss your travel purpose, destination and eligibility with our expert</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-circle">2</div>
+        <div class="step-title">Document Checklist</div>
+        <div class="step-desc">We provide a customized checklist tailored to your visa type & country</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-circle">3</div>
+        <div class="step-title">Application Filing</div>
+        <div class="step-desc">We prepare and review all forms and documents before submission</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-circle">4</div>
+        <div class="step-title">Embassy Appointment</div>
+        <div class="step-desc">We handle appointment booking and prepare you for the interview</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-circle">5</div>
+        <div class="step-title">Visa Approved 🎉</div>
+        <div class="step-desc">Receive your visa and get pre-departure guidance from our team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section section-alt" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal-left">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title title-light">The GM Overseas<br>Difference</h2>
+        <div class="gold-line"></div>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div>
+              <div class="why-title">Deep European Expertise</div>
+              <div class="why-desc">Our team has handled thousands of Schengen applications — we know exactly what embassies look for and how to build the strongest possible file.</div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div>
+              <div class="why-title">Personalized Guidance</div>
+              <div class="why-desc">No cookie-cutter approach. Every case is handled personally with one-on-one attention from a dedicated consultant throughout the process.</div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div>
+              <div class="why-title">Transparent Pricing</div>
+              <div class="why-desc">Clear fee structures with no hidden charges. You know exactly what you're paying for from day one.</div>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <div>
+              <div class="why-title">Post-Visa Support</div>
+              <div class="why-desc">Our relationship doesn't end at visa approval. We provide pre-departure briefings, travel tips, and ongoing support.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual reveal-right">
+        <div class="why-badge">
+          <div class="why-badge-num">98%</div>
+          <div class="why-badge-txt">Success Rate</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80" alt="GM Overseas Consultants" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="section-label" style="justify-content:center">Client Stories</div>
+      <h2 class="section-title title-dark">What Our Clients Say</h2>
+      <div class="gold-line" style="margin:20px auto 0"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">GM Overseas made the entire Schengen visa process incredibly smooth. They guided me through every document and I got my Germany visa approved in just 10 days. Absolutely recommend!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RK</div>
+          <div>
+            <div class="author-name">Rahul Kumar</div>
+            <div class="author-dest">🇩🇪 Germany Tourist Visa</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">I was nervous about applying for a student visa to the Netherlands. The GM Overseas team held my hand through everything — admission documentation, visa filing, even the interview prep. Got in!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PS</div>
+          <div>
+            <div class="author-name">Priya Sharma</div>
+            <div class="author-dest">🇳🇱 Netherlands Student Visa</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Our business visa for France was approved with zero hassle thanks to GM Overseas. Their documentation checklist was spot-on and the team was always available on WhatsApp. Highly professional!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AM</div>
+          <div>
+            <div class="author-name">Arjun Mehta</div>
+            <div class="author-dest">🇫🇷 France Business Visa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta-banner">
+  <div class="cta-inner reveal">
+    <h2>Ready to Begin Your<br><em>European Journey?</em></h2>
+    <p>Talk to our expert consultants today — free of charge. Get a clear picture of your visa eligibility, required documents, and timelines in one call.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="#contact" class="btn-primary">Book Free Consultation</a>
+      <a href="tel:+393508700594" class="btn-outline">📞 Call Us Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title title-dark">Let's Plan Your<br>European Future</h2>
+        <div class="gold-line"></div>
+        <p class="section-desc" style="margin-bottom:40px">Our consultants are available Monday–Saturday, 10am–6pm IST. Reach us by WhatsApp, or Email Us.</p>
+        <div class="contact-info-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Office Address</div>
+            <div class="contact-value">GM Overseas, Via Attilio Regolo, 21, 00192 Roma RM, Italy</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone / WhatsApp</div>
+            <div class="contact-value">+39 350 870 0594</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">info@gm-overseas.com</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Working Hours</div>
+            <div class="contact-value">Mon–Sat: 10:00 AM – 6:00 PM IST</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div style="background:var(--white);padding:44px;border-top:3px solid var(--gold)">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--navy);margin-bottom:28px">Request a Free Consultation</h3>
+          <!-- WORKING FORMSPREE FORM WITH ENDPOINT -->
+          
+      
+<form action="https://formsubmit.co/malek.cityofchicago@gmail.com" method="POST">
+  <!-- Optional: disable CAPTCHA and set redirect -->
+  <input type="hidden" name="_captcha" value="false">
+  <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html"> -->
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" name="name" placeholder="Your full name" required />
+    </div>
+    <div class="form-group">
+      <label>Phone / WhatsApp</label>
+      <input type="tel" name="phone" placeholder="+91xxxxxxxxx" required />
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email Address</label>
+    <input type="email" name="email" placeholder="your@email.com" required />
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Visa Type</label>
+      <select name="visa_type" required>
+        <option value="">Select visa type</option>
+        <option>Schengen Tourist Visa</option>
+        <option>Business Visa</option>
+        <option>Student Admission to Europe</option>
+        <option>Student Internship Visa</option>
+        <option>Work Permit / D-Visa</option>
+        <option>Manpower – Hire from India</option>
+        <option>Manpower – Find Job in Europe</option>
+        <option>Family Visa</option>
+        <option>Long Stay / Settlement</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Destination Country</label>
+      <select name="country" required>
+        <option value="">Select country</option>
+        <option>Germany</option>
+        <option>France</option>
+        <option>Italy</option>
+        <option>Netherlands</option>
+        <option>Spain</option>
+        <option>Switzerland</option>
+        <option>United Kingdom</option>
+        <option>Portugal</option>
+        <option>Other Europe</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Message (Optional)</label>
+    <textarea name="message" placeholder="Tell us about your travel plans or any concerns..."></textarea>
+  </div>
+  <button type="submit" class="form-submit">Send Consultation Request →</button>
+  		<input type="hidden" name="_next" value="https://www.gm-overseas.com/thank-you.html">
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <!-- FIXED LOGO URL also in footer -->
+          <img src="https://drive.google.com/thumbnail?id=1Rj7PXlDRIRidVFYlVxK6pkW6HHTfcBdE&sz=w2000" alt="GM Overseas" style="height:56px;width:56px;border-radius:50%;background:white;padding:4px;object-fit:contain" />
+          <div class="nav-logo-text">
+            <div class="nav-logo-name"><span>GM</span> OVERSEAS</div>
+            <div class="nav-logo-tag">Your Destination, Our Commitment</div>
+          </div>
+        </div>
+        <p>India's trusted partner for Schengen & European visas, student admissions, and work permits. Your dream is our mission.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" title="Instagram">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="#" class="social-btn" title="Facebook">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="social-btn" title="LinkedIn">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://wa.me/+393508700594" class="social-btn" title="WhatsApp">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 32 32"><path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.7A13 13 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm5.98 18.86c-.33-.16-1.93-.95-2.23-1.06-.3-.1-.52-.16-.74.16s-.85 1.06-1.04 1.28c-.19.22-.38.25-.7.08-.33-.16-1.38-.5-2.63-1.6-.97-.87-1.63-1.94-1.82-2.27-.19-.32-.02-.5.14-.66l.47-.54c.12-.14.16-.25.25-.42.08-.16.04-.31-.02-.44-.08-.13-.74-1.77-1.01-2.42-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4s-1.14 1.12-1.14 2.72 1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.56 4.91.78.33 1.38.53 1.86.68.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.14-.29-.22-.62-.38z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#countries">Countries</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Visa Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Schengen Tourist Visa</a></li>
+          <li><a href="#services">Business Visa</a></li>
+          <li><a href="#manpower">Manpower Recruitment</a></li>
+          <li><a href="#students">Student Admissions</a></li>
+          <li><a href="#students">Student Internship</a></li>
+          <li><a href="#services">Work Permit</a></li>
+          <li><a href="#services">Family Visa</a></li>
+          <li><a href="#services">Visa Appeal</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Contact Us</div>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.82rem;line-height:2">
+          📍 Via Attilio Regolo, 21, 00192 Roma RM, Italy<br>
+          📞 +39 350 870 0594<br>
+          ✉️ info@gm-overseas.com<br>
+          🕐 Mon–Sat: 10am–6pm IST
+        </p>
+        <a href="#contact" class="btn-primary" style="margin-top:20px;display:inline-block;font-size:0.72rem;padding:12px 24px">Free Consultation</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>GM Overseas</span>. All rights reserved. Your Destination, Our Commitment.</p>
+      <p>Designed with ♥ for Indian dreamers heading to Europe</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== ROTATING FAVICON =====
+  (function rotatingFavicon() {
+    // Create canvas (favicon standard 32x32, but we use 64x64 for crispness, then scale down)
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+
+    // Get the existing favicon link or create one
+    let link = document.querySelector("link[rel*='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'shortcut icon';
+      document.head.appendChild(link);
+    }
+
+    // Load the original favicon.ico
+    const img = new Image();
+    img.crossOrigin = "Anonymous"; // not strictly needed for same-origin / favicon.ico but safe
+    img.src = "/favicon.ico?" + Date.now(); // cache buster to avoid stale image
+
+    let angle = 0;
+    let imageLoaded = false;
+
+    img.onload = function() {
+      imageLoaded = true;
+      // Start animation only after image is loaded
+      updateFavicon();
+    };
+
+    img.onerror = function() {
+      // If favicon.ico fails to load, draw a fallback rotating gear
+      imageLoaded = false;
+      updateFavicon(); // will draw fallback
+    };
+
+    function drawRotatedIcon(rad) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      if (imageLoaded && img.complete && img.naturalWidth > 0) {
+        // Draw the original favicon rotated
+        ctx.save();
+        ctx.translate(canvas.width/2, canvas.height/2);
+        ctx.rotate(rad);
+        // Draw image centered. Use a size that fills most of the canvas but keeps aspect ratio
+        const size = Math.min(canvas.width, canvas.height) * 0.9;
+        ctx.drawImage(img, -size/2, -size/2, size, size);
+        ctx.restore();
+      } else {
+        // Fallback: draw a simple rotating golden circle with G
+        ctx.save();
+        ctx.translate(canvas.width/2, canvas.height/2);
+        ctx.rotate(rad);
+        ctx.beginPath();
+        ctx.arc(0, 0, 28, 0, Math.PI * 2);
+        ctx.fillStyle = '#b8963e';
+        ctx.fill();
+        ctx.fillStyle = '#0d1b3e';
+        ctx.font = 'bold 36px "Cormorant Garamond", serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('G', 0, 2);
+        ctx.restore();
+      }
+      
+      // Optional outline border to make it pop on light/dark tabs
+      ctx.beginPath();
+      ctx.arc(canvas.width/2, canvas.height/2, 31, 0, Math.PI * 2);
+      ctx.strokeStyle = '#b8963e';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      
+      // Update favicon href
+      link.href = canvas.toDataURL('image/png');
+    }
+
+    function updateFavicon() {
+      angle += 0.08; // rotation speed (radians per frame)
+      if (angle > Math.PI * 2) angle -= Math.PI * 2;
+      drawRotatedIcon(angle);
+      requestAnimationFrame(updateFavicon);
+    }
+
+    // If image loads fast, start; otherwise start fallback immediately
+    if (img.complete && img.naturalWidth !== 0) {
+      imageLoaded = true;
+      updateFavicon();
+    } else {
+      // start with fallback but will switch to real image when loaded
+      updateFavicon();
+    }
+  })();
+
+  // ===== NAVBAR SCROLL =====
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ===== PARALLAX =====
+  const parallaxBg = document.getElementById('parallaxBg');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY < window.innerHeight) {
+      parallaxBg.style.transform = `translateY(${scrollY * 0.4}px)`;
+    }
+  });
+
+  // ===== GENERATE STARS =====
+  const starsContainer = document.getElementById('heroStars');
+  for (let i = 0; i < 40; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 3 + 1;
+    star.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      top: ${Math.random() * 80}%; left: ${Math.random() * 100}%;
+      animation-delay: ${Math.random() * 4}s;
+      animation-duration: ${2 + Math.random() * 3}s;
+    `;
+    starsContainer.appendChild(star);
+  }
+
+  // ===== SCROLL REVEAL =====
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== COUNTER ANIMATION =====
+  function animateCounter(el, target, suffix = '') {
+    let current = 0;
+    const increment = target / 60;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 25);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = entry.target.querySelectorAll('.stat-num');
+        nums.forEach(n => {
+          const text = n.textContent;
+          const num = parseInt(text.replace(/\D/g, ''));
+          const suffix = text.replace(/[\d]/g, '');
+          animateCounter(n, num, suffix);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObserver.observe(heroStats);
+
+  // ===== MOBILE MENU =====
+  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+</script>
+</body>
+</html>
