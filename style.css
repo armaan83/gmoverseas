@@ -93,7 +93,6 @@ ul { list-style: none; }
   white-space: nowrap;
   flex-shrink: 0;
 }
-}
 .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
 .nav-cta::after { display: none !important; }
 
