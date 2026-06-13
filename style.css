@@ -65,12 +65,12 @@ ul { list-style: none; }
   margin-top: 3px;
 }
 .nav-links {
-  display: flex; align-items: center; gap: 36px;
+  display: flex; align-items: center; gap: 22px;
 }
 .nav-links a {
   color: rgba(255,255,255,0.85);
-  font-size: 0.78rem; font-weight: 500;
-  letter-spacing: 2px; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 1.5px; text-transform: uppercase;
   position: relative; padding-bottom: 4px;
   transition: color 0.3s;
 }
@@ -84,10 +84,10 @@ ul { list-style: none; }
 .nav-cta {
   background: var(--gold);
   color: var(--navy) !important;
-  padding: 10px 24px !important;
+  padding: 10px 20px !important;
   border-radius: 2px;
   font-weight: 600 !important;
-  letter-spacing: 1.5px !important;
+  letter-spacing: 1px !important;
   transition: background 0.3s, transform 0.2s !important;
 }
 .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
