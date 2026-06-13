@@ -73,9 +73,7 @@ ul { list-style: none; }
   letter-spacing: 1.5px; text-transform: uppercase;
   position: relative; padding-bottom: 4px;
   transition: color 0.3s;
-  white-space: nowrap;
-}
-  
+  white-space: nowrap;  
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: 0; left: 0;
