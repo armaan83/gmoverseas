@@ -73,6 +73,9 @@ ul { list-style: none; }
   letter-spacing: 1.5px; text-transform: uppercase;
   position: relative; padding-bottom: 4px;
   transition: color 0.3s;
+  white-space: nowrap;
+}
+  
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: 0; left: 0;
@@ -89,6 +92,9 @@ ul { list-style: none; }
   font-weight: 600 !important;
   letter-spacing: 1px !important;
   transition: background 0.3s, transform 0.2s !important;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 }
 .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
 .nav-cta::after { display: none !important; }
