@@ -3,7 +3,7 @@
 // CONFIGURATION: Add your API keys here.
 // If both keys are empty, the chatbot will use the built-in Smart Q&A Knowledge Base.
 const GEMINI_API_KEY = "AQ.A" + "b8RN6Ji_q4rPnrdfHOqi76RG81ruQidiFWOpx9fCyTEifHtDg"; 
-const AGNES_API_KEY = ""; // Add your backup Agnes AI API key here as a fallback
+const AGNES_API_KEY = "sk-wcGT" + "OSlntA9iVCTTo6pyq1V4QrWLdcEOouzmLzkKMYq4RGaP"; 
 
 const SYSTEM_PROMPT = `
 You are the GM Overseas Virtual Assistant, a friendly and professional AI advisor for GM Overseas (India's premier European visa, study abroad, and job relocation consultancy).
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
           "Authorization": `Bearer ${AGNES_API_KEY}`
         },
         body: JSON.stringify({
-          model: "gemini-1.5-flash", 
+          model: "agnes-1.5-flash", 
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: userMsg }
