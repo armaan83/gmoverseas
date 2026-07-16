@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EU Relocation Costs &amp; Job Expectancy Calculators | GM Overseas</title>
+  <meta name="description" content="Use our interactive European relocation cost calculators and job expectancy settlement tools to analyze costs, salaries, and visa success probability for Germany, Italy, Canada, and Croatia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #0d1b3e;
+      --navy-mid: #162347;
+      --navy-light: #1e3060;
+      --gold: #b8963e;
+      --gold-light: #d4af5a;
+      --gold-pale: #f0e0b0;
+      --cream: #faf8f3;
+      --white: #ffffff;
+      --text-dark: #0d1b3e;
+      --text-muted: #5a6a8a;
+      --border: rgba(184,150,62,0.25);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Jost', sans-serif; color: var(--text-dark); background: var(--cream); overflow-x: hidden; }
+    
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ===== NAVBAR ===== */
+    #navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 18px 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(13,27,62,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img {
+      height: 52px; width: 52px; object-fit: contain;
+      border-radius: 50%; background: white; padding: 4px;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--white);
+      letter-spacing: 2px; line-height: 1;
+    }
+    .nav-logo-name span { color: var(--gold-light); }
+    .nav-logo-tag {
+      font-size: 0.6rem; letter-spacing: 3px; color: var(--gold-pale);
+      text-transform: uppercase; margin-top: 3px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase; position: relative;
+      padding-bottom: 4px; transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--gold-light);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--gold-light); }
+    .nav-links a.active::after { width: 100%; }
+    .nav-cta {
+      background: var(--gold); color: var(--navy) !important;
+      padding: 10px 24px !important; border-radius: 2px;
+      font-weight: 600 !important; letter-spacing: 1.5px !important;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 26px; height: 2px; background: white; display: block; transition: all 0.3s; }
+
+    /* Mobile navigation */
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--navy); z-index: 999; flex-direction: column;
+      align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white); font-size: 1.3rem;
+      font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 2px;
+    }
+    .mobile-menu a:hover { color: var(--gold-light); }
+    .mobile-close {
+      position: absolute; top: 24px; right: 5%;
+      font-size: 2rem; color: white; cursor: pointer; background: none; border: none;
+    }
+
+    /* ===== HERO PANEL ===== */
+    .hero-panel {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 140px 5% 70px;
+      text-align: center;
+      color: var(--white);
+    }
+    .hero-panel h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero-panel h1 span { color: var(--gold-light); }
+    .hero-panel p {
+      color: var(--gold-pale);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-weight: 300;
+    }
+
+    /* ===== NAVIGATION TABS ===== */
+    .tabs-wrapper {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 12px; max-width: 1000px; margin: -30px auto 40px;
+      padding: 0 20px; position: relative; z-index: 5;
+    }
+    .tab-btn {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      padding: 14px 24px;
+      border-radius: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(13,27,62,0.06);
+    }
+    .tab-btn:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .tab-btn.active {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      box-shadow: 0 8px 20px rgba(184, 150, 62, 0.25);
+    }
+
+    /* ===== INTERACTIVE GRID LAYOUT ===== */
+    .dashboard-container {
+      max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;
+    }
+    .calc-panel { display: none; animation: fadeIn 0.4s ease forwards; }
+    .calc-panel.active { display: block; }
+
+    .grid-layout {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; align-items: start;
+    }
+    .input-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px; padding: 40px;
+      box-shadow: 0 10px 30px rgba(13,27,62,0.04);
+    }
+    .input-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--navy);
+      margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+    }
+    .input-card h2 span { color: var(--gold); }
+
+    /* Forms */
+    .form-group { margin-bottom: 22px; }
+    .form-group label {
+      display: block; font-size: 0.82rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--text-muted); margin-bottom: 8px;
+    }
+    .form-control {
+      width: 100%; background: #fafaf8; border: 1px solid var(--border);
+      border-radius: 4px; padding: 12px 16px; color: var(--navy);
+      font-family: 'Jost', sans-serif; font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .form-control:focus {
+      outline: none; border-color: var(--navy);
+      background: var(--white);
+    }
+
+    /* Results */
+    .results-card {
+      background: var(--navy); color: var(--white);
+      border-radius: 4px; padding: 40px;
+      position: sticky; top: 100px;
+      box-shadow: 0 20px 45px rgba(13,27,62,0.15);
+    }
+    .results-header {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 20px; margin-bottom: 24px;
+    }
+    .results-title {
+      font-size: 0.9rem; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--gold-pale);
+      margin-bottom: 6px;
+    }
+    .results-main-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 700; color: var(--gold-light);
+      line-height: 1;
+    }
+    .metric-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+    .metric-item { display: flex; justify-content: space-between; font-size: 0.95rem; }
+    .metric-label { color: var(--gold-pale); }
+    .metric-val { font-weight: 600; color: var(--white); }
+    .metric-val.gold { color: var(--gold-light); }
+
+    /* CTA Lead Capture Box */
+    .lead-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(184,150,62,0.25);
+      border-radius: 4px; padding: 24px;
+      text-align: center; margin-top: 30px;
+    }
+    .lead-box h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .lead-box p { font-size: 0.8rem; color: var(--gold-pale); margin-bottom: 16px; }
+    
+    .btn-lead {
+      display: inline-block; width: 100%; background: var(--gold);
+      color: var(--navy); border: none; padding: 12px 24px;
+      border-radius: 2px; font-family: 'Jost', sans-serif;
+      font-size: 0.88rem; font-weight: 700; cursor: pointer;
+      text-align: center; text-decoration: none; transition: var(--transition);
+    }
+    .btn-lead:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* Charts/Bar style */
+    .progress-bar-container {
+      width: 100%; background: #eae7df; height: 10px;
+      border-radius: 5px; overflow: hidden; margin-top: 6px;
+    }
+    .progress-bar-fill {
+      height: 100%; background: var(--gold); border-radius: 5px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Comparison columns */
+    .comparer-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;
+    }
+    .comparison-col {
+      background: #fafaf8; border: 1px solid var(--border);
+      border-radius: 4px; padding: 18px; text-align: center;
+    }
+    .comparison-col h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; }
+    .comparison-col div { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--navy); }
+
+    /* Table styles */
+    .simple-table {
+      width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85rem;
+    }
+    .simple-table th { background: #eae7df; text-align: left; padding: 8px 12px; }
+    .simple-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 992px) {
+      .grid-layout { grid-template-columns: 1fr; }
+      .results-card { position: static; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <img src="https://drive.google.com/thumbnail?id=1Rj7PXlDRIRidVFYlVxK6pkW6HHTfcBdE&sz=w2000" alt="GM Overseas Logo" />
+      <div class="nav-logo-text">
+        <div class="nav-logo-name"><span>GM</span> OVERSEAS</div>
+        <div class="nav-logo-tag">Your Destination, Our Commitment</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#students">Students</a></li>
+      <li><a href="index.html#countries">Countries</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Free Consultation</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()">✕</button>
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="index.html#about" onclick="toggleMenu()">About</a>
+    <a href="index.html#services" onclick="toggleMenu()">Services</a>
+    <a href="index.html#students" onclick="toggleMenu()">Students</a>
+    <a href="index.html#countries" onclick="toggleMenu()">Countries</a>
+    <a href="resources.html" onclick="toggleMenu()">Resources</a>
+    <a href="index.html#contact" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero-panel">
+    <h1>European <span>Relocation &amp; Job</span> Eligibility Hub</h1>
+    <p>Calculate relocation savings requirements, map salary indexes, and backtest your job prospects and settlement roadmap in the European Union.</p>
+  </section>
+
+  <!-- TABS CONTAINER -->
+  <div class="tabs-wrapper">
+    <button class="tab-btn active" onclick="showTab('relocation-tab')">✈ Relocation Cost &amp; Savings</button>
+    <button class="tab-btn" onclick="showTab('salary-tab')">🏢 Cost-of-Living &amp; Salary</button>
+    <button class="tab-btn" onclick="showTab('settlement-tab')">🎓 EU Job &amp; Settlement Success</button>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <div class="dashboard-container">
+
+    <!-- ================= TAB 1: RELOCATION COSTS ================= -->
+    <div id="relocation-tab" class="calc-panel active">
+      <div class="grid-layout">
+        <!-- Input Form -->
+        <div class="input-card">
+          <h2><span>✈</span> Cost &amp; Savings Requirement Calculator</h2>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.92rem;">Calculate Schengen visa fees, average flight tickets, initial setup allowances, and official savings/blocked account proof required by European immigration.</p>
+          
+          <div class="form-group">
+            <label for="rel-country">Target Destination Country</label>
+            <select id="rel-country" class="form-control" onchange="runRelocationCalc()">
+              <option value="germany" selected>Germany</option>
+              <option value="italy">Italy</option>
+              <option value="croatia">Croatia</option>
+              <option value="poland">Poland</option>
+              <option value="canada">Canada</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="rel-visa">Visa Category</label>
+            <select id="rel-visa" class="form-control" onchange="runRelocationCalc()">
+              <option value="student" selected>Student Visa / Education</option>
+              <option value="work">Work Permit / Job Seeker</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="rel-family">Family Size</label>
+            <select id="rel-family" class="form-control" onchange="runRelocationCalc()">
+              <option value="1" selected>Single Applicant</option>
+              <option value="2">Couple (2 Applicants)</option>
+              <option value="4">Family (4 Applicants)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="results-card">
+          <div class="results-header">
+            <div class="results-title">Est. Total Year 1 Capital Required</div>
+            <div id="rel-total-capital" class="results-main-val">₹0</div>
+            <div class="results-main-sub">Includes flights, visa fees, &amp; required living proof</div>
+          </div>
+
+          <div class="metrics-list">
+            <div class="metric-item">
+              <span class="metric-label">Official Visa Application Fee</span>
+              <span id="rel-visa-fee" class="metric-val">₹0</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Required Living Proof (Blocked Account)</span>
+              <span id="rel-proof-fee" class="metric-val gold">₹0</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Flights &amp; Year 1 Relocation Setup</span>
+              <span id="rel-setup-fee" class="metric-val">₹0</span>
+            </div>
+            <div class="metric-item" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 10px;">
+              <span class="metric-label">Cost of Living vs. India Index</span>
+              <span id="rel-col-index" class="metric-val gold">0% Higher</span>
+            </div>
+          </div>
+
+          <div class="lead-box">
+            <h3>Need Help Meeting Requirements?</h3>
+            <p>We guide you on student loans, blocked account setup, and work permit processing.</p>
+            <a href="index.html#contact" class="btn-lead">Get Free Visa Guidance →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 2: COST OF LIVING & SALARY ================= -->
+    <div id="salary-tab" class="calc-panel">
+      <div class="grid-layout">
+        <!-- Input Form -->
+        <div class="input-card">
+          <h2><span>🏢</span> Salary Purchasing Power Comparer</h2>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.92rem;">Compare rent prices, grocery costs, transit fees, and check what salary you need in Europe to match your purchasing power in India.</p>
+          
+          <div class="form-group">
+            <label for="sal-india">Your Annual Salary in India (INR)</label>
+            <div class="input-wrapper" style="position: relative;">
+              <span style="position: absolute; left: 16px; top: 12px; font-weight: bold; color: var(--navy);">₹</span>
+              <input type="number" id="sal-india" class="form-control" style="padding-left: 32px;" value="1200000" oninput="runSalaryCalc()" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sal-dest-city">Target European City Hub</label>
+            <select id="sal-dest-city" class="form-control" onchange="runSalaryCalc()">
+              <option value="munich" selected>Munich, Germany</option>
+              <option value="milan">Milan, Italy</option>
+              <option value="zagreb">Zagreb, Croatia</option>
+              <option value="warsaw">Warsaw, Poland</option>
+              <option value="toronto">Toronto, Canada</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="results-card" style="background: var(--navy-mid);">
+          <div class="results-header">
+            <div class="results-title">Equivalent Target Salary Needed</div>
+            <div id="sal-equiv-val" class="results-main-val">€0</div>
+            <div class="results-main-sub">To maintain the exact same quality of life</div>
+          </div>
+
+          <div class="comparer-grid">
+            <div class="comparison-col">
+              <h4>Average Rent (1-Bed)</h4>
+              <div id="comp-rent" style="color: var(--accent-red);">+0%</div>
+            </div>
+            <div class="comparison-col">
+              <h4>Grocery Costs</h4>
+              <div id="comp-grocery" style="color: var(--accent-red);">+0%</div>
+            </div>
+          </div>
+
+          <div class="metrics-list">
+            <div class="metric-item">
+              <span class="metric-label">Dining &amp; Restaurants Cost</span>
+              <span id="comp-dining" class="metric-val">0% higher</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Local Public Transport</span>
+              <span id="comp-transit" class="metric-val">0% higher</span>
+            </div>
+          </div>
+
+          <div class="lead-box" style="border-color: var(--border);">
+            <h3>Remote Job or Contract Relocation?</h3>
+            <p>Ensure you negotiate a salary that covers your local European living costs with savings left over.</p>
+            <a href="index.html#contact" class="btn-lead">Speak to Relocation Experts →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TAB 3: SETTLEMENT SUCCESS ================= -->
+    <div id="settlement-tab" class="calc-panel">
+      <div class="grid-layout">
+        <!-- Input Form -->
+        <div class="input-card">
+          <h2><span>🎓</span> EU Job Expectancy &amp; Settlement Calculator</h2>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.92rem;">Select your field of study or profession to analyze your career success chances, see historical job trend statistics, and calculate your PR path.</p>
+          
+          <div class="form-group">
+            <label for="set-field">Your Study / Profession Field</label>
+            <select id="set-field" class="form-control" onchange="runSettlementCalc()">
+              <option value="it" selected>IT, Software Engineering &amp; AI</option>
+              <option value="eng">Engineering (Mechanical, Electrical, MINT)</option>
+              <option value="health">Healthcare, Medicine &amp; Nursing</option>
+              <option value="hospitality">Hospitality, Culinary &amp; Tourism</option>
+              <option value="skilled">Skilled Trades (Welder, Electrician, Machinist)</option>
+              <option value="business">Business, Finance &amp; Marketing</option>
+              <option value="humanities">Humanities, Arts &amp; Social Sciences</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="set-country">Target Relocation Destination</label>
+            <select id="set-country" class="form-control" onchange="runSettlementCalc()">
+              <option value="germany" selected>Germany</option>
+              <option value="italy">Italy</option>
+              <option value="croatia">Croatia</option>
+              <option value="poland">Poland</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="set-lang">Your Local Language Proficiency</label>
+            <select id="set-lang" class="form-control" onchange="runSettlementCalc()">
+              <option value="none" selected>No Language Skills (English Only)</option>
+              <option value="basic">Basic Level (A1/A2)</option>
+              <option value="inter">Intermediate Level (B1/B2)</option>
+              <option value="fluent">Fluent / Native (C1/C2)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Output Card -->
+        <div class="results-card">
+          <div class="results-header">
+            <div class="results-title">Job Expectancy &amp; Visa Success Score</div>
+            <div id="set-score" class="results-main-val">0 / 100</div>
+            <div class="progress-bar-container">
+              <div id="set-score-bar" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="metrics-list">
+            <div class="metric-item">
+              <span class="metric-label">5-Year Job Opening Trend</span>
+              <span id="set-trend" class="metric-val gold">Rising (+0%)</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Est. Time to Permanent Residency</span>
+              <span id="set-pr-time" class="metric-val">0 Months</span>
+            </div>
+          </div>
+
+          <!-- Settlement Advice Box -->
+          <div id="set-advice" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 4px; font-size: 0.85rem; line-height: 1.6; color: var(--gold-pale); margin-bottom: 20px;">
+            Select your inputs to see tailored settlement and language roadmap advice.
+          </div>
+
+          <div class="lead-box">
+            <h3>Boost Your Settlement Success</h3>
+            <p>Get a step-by-step career path, admission coaching, and secure job recruitment.</p>
+            <a href="index.html#contact" class="btn-lead">Book Free Consultation →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="background: var(--navy); padding: 60px 5% 30px; color: var(--white); font-size: 0.85rem; line-height: 1.8; border-top: 1px solid var(--border);">
+      <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+        <div>
+          <div class="nav-logo" style="margin-bottom: 20px;">
+            <img src="https://drive.google.com/thumbnail?id=1Rj7PXlDRIRidVFYlVxK6pkW6HHTfcBdE&sz=w2000" alt="GM Overseas" style="height:48px;width:48px;" />
+            <div class="nav-logo-text">
+              <div class="nav-logo-name" style="color: white;"><span>GM</span> OVERSEAS</div>
+              <div class="nav-logo-tag" style="color: var(--gold-pale);">Your Destination, Our Commitment</div>
+            </div>
+          </div>
+          <p style="color: var(--gold-pale); max-width: 350px;">India's trusted partner for Schengen &amp; European visas, student admissions, and work permits. Your dream is our mission.</p>
+        </div>
+        <div>
+          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: white; margin-bottom: 16px;">Quick Links</h4>
+          <ul style="display:flex; flex-direction:column; gap:8px;">
+            <li><a href="index.html" style="color: var(--gold-pale);">Home</a></li>
+            <li><a href="index.html#about" style="color: var(--gold-pale);">About Us</a></li>
+            <li><a href="index.html#services" style="color: var(--gold-pale);">Our Services</a></li>
+            <li><a href="resources.html" style="color: var(--gold-pale);">Visa Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: white; margin-bottom: 16px;">Support Contact</h4>
+          <ul style="display:flex; flex-direction:column; gap:8px; color: var(--gold-pale);">
+            <li>Email: info@gm-overseas.com</li>
+            <li>WhatsApp Chat: +39 350 870 0594</li>
+            <li>Offices: India, Croatia, Italy</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: var(--gold-pale);">
+        <p>&copy; 2026 GM Overseas. All rights reserved. Your trusted European visa consulting partner.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CALCULATOR SCRIPT LOGIC -->
+  <script>
+    // Tab switching system
+    function showTab(tabId) {
+      document.querySelectorAll('.calc-panel').forEach(panel => panel.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Toggle menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // ================= TOOL 1: RELOCATION COSTS & SAVINGS =================
+    const COUNTRY_COSTS = {
+      germany: {
+        visaFee: 7200, // ₹7,200 (approx €80)
+        blockedAmount: 1071360, // ₹1,071,360 (€11,904 blocked account)
+        flightSetup: 135000, // ₹135,000 flights + 1st month rent
+        colIndex: 145, // 145% higher than India
+        workBlocked: 450000 // €5,000 initial buffer for job seeker
+      },
+      italy: {
+        visaFee: 4500, // €50 student visa
+        blockedAmount: 540000, // ₹540,000 (€6,000 show money/scholarship)
+        flightSetup: 110000,
+        colIndex: 98,
+        workBlocked: 360000
+      },
+      croatia: {
+        visaFee: 8100, // €90 visa fee
+        blockedAmount: 585000, // ₹585,000 (€6,500/year cost of living proof)
+        flightSetup: 120000,
+        colIndex: 65,
+        workBlocked: 270000
+      },
+      poland: {
+        visaFee: 7200,
+        blockedAmount: 630000, // €7,000 / year proof
+        flightSetup: 95000,
+        colIndex: 58,
+        workBlocked: 315000
+      },
+      canada: {
+        visaFee: 9300, // $150 CAD
+        blockedAmount: 1280000, // $20,635 CAD GIC
+        flightSetup: 220000,
+        colIndex: 175,
+        workBlocked: 750000
+      }
+    };
+
+    function runRelocationCalc() {
+      const country = document.getElementById('rel-country').value;
+      const category = document.getElementById('rel-visa').value;
+      const familySize = parseInt(document.getElementById('rel-family').value) || 1;
+
+      const data = COUNTRY_COSTS[country];
+      if (!data) return;
+
+      const visaFee = data.visaFee * familySize;
+      const baseBlocked = category === 'student' ? data.blockedAmount : data.workBlocked;
+      const blockedAmount = baseBlocked * (familySize === 1 ? 1 : familySize * 0.75); // slight discount for shared cost
+      const setupFee = data.flightSetup * familySize;
+
+      const totalCapital = visaFee + blockedAmount + setupFee;
+
+      // Update UI
+      document.getElementById('rel-visa-fee').innerText = `₹${Math.round(visaFee).toLocaleString('en-IN')}`;
+      document.getElementById('rel-proof-fee').innerText = `₹${Math.round(blockedAmount).toLocaleString('en-IN')}`;
+      document.getElementById('rel-setup-fee').innerText = `₹${Math.round(setupFee).toLocaleString('en-IN')}`;
+      document.getElementById('rel-total-capital').innerText = `₹${Math.round(totalCapital).toLocaleString('en-IN')}`;
+      document.getElementById('rel-col-index').innerText = `+${data.colIndex}% Higher`;
+    }
+
+    // ================= TOOL 2: SALARY & COL COMPARER =================
+    const CITY_COMPARER = {
+      munich: { rate: 90, rent: 220, grocery: 82, dining: 110, transit: 120 }, // multipliers compared to India bases
+      milan: { rate: 82, rent: 170, grocery: 78, dining: 98, transit: 85 },
+      zagreb: { rate: 45, rent: 85, grocery: 58, dining: 55, transit: 42 },
+      warsaw: { rate: 42, rent: 90, grocery: 51, dining: 48, transit: 38 },
+      toronto: { rate: 115, rent: 245, grocery: 98, dining: 115, transit: 145 }
+    };
+
+    function runSalaryCalc() {
+      const salIndia = parseFloat(document.getElementById('sal-india').value) || 0;
+      const city = document.getElementById('sal-dest-city').value;
+
+      const data = CITY_COMPARER[city];
+      if (!data) return;
+
+      // Convert salary to approximate Euros required to maintain purchasing power
+      // Average exchange: 1 Euro = ₹90 INR
+      // Formula: (Salary INR / 90) * City Factor multiplier
+      const baseEuros = (salIndia / 90) * (data.rate / 100) * 1.4; // 1.4 lifestyle adjustments
+      
+      document.getElementById('sal-equiv-val').innerText = `€${Math.round(baseEuros).toLocaleString()}/yr`;
+      document.getElementById('comp-rent').innerText = `+${data.rent}%`;
+      document.getElementById('comp-grocery').innerText = `+${data.grocery}%`;
+      document.getElementById('comp-dining').innerText = `+${data.dining}% higher`;
+      document.getElementById('comp-transit').innerText = `+${data.transit}% higher`;
+    }
+
+    // ================= TOOL 3: EU JOB EXPECTANCY & SETTLEMENT =================
+    const PROFESSION_DATA = {
+      it: { label: "IT & AI Engineering", baseScore: 92, trend: 15, prTime: 21, shortage: "Critical shortage of developers & cybersecurity experts." },
+      eng: { label: "Mechanical/Electrical MINT", baseScore: 85, trend: 8, prTime: 24, shortage: "Steady demand across manufacturing & automation industries." },
+      health: { label: "Healthcare & Nursing", baseScore: 95, trend: 22, prTime: 18, shortage: "Severely critical shortage of nursing staff and care workers." },
+      hospitality: { label: "Hospitality & Tourism", baseScore: 68, trend: 4, prTime: 36, shortage: "High seasonal demand in Croatia/Italy; moderate PR pathway." },
+      skilled: { label: "Welder/Trades", baseScore: 90, trend: 18, prTime: 24, shortage: "High demand for welders, operators, and CNC machinists." },
+      business: { label: "Business & Finance", baseScore: 60, trend: -2, prTime: 48, shortage: "Tight job market; corporate roles require high local language levels." },
+      humanities: { label: "Arts & Humanities", baseScore: 45, trend: -8, prTime: 60, shortage: "Low direct shortages; success relies heavily on personal networking." }
+    };
+
+    function runSettlementCalc() {
+      const field = document.getElementById('set-field').value;
+      const country = document.getElementById('set-country').value;
+      const lang = document.getElementById('set-lang').value;
+
+      const data = PROFESSION_DATA[field];
+      if (!data) return;
+
+      let score = data.baseScore;
+      let prTime = data.prTime;
+
+      // Adjustments based on language
+      let langBonus = 0;
+      if (lang === 'none') {
+        score -= 20;
+        prTime += 12;
+      } else if (lang === 'basic') {
+        score -= 5;
+        prTime += 6;
+      } else if (lang === 'inter') {
+        score += 8;
+        prTime -= 3;
+        langBonus = 25;
+      } else if (lang === 'fluent') {
+        score += 15;
+        prTime -= 9;
+        langBonus = 40;
+      }
+
+      // Adjustments based on country constraints
+      if (country === 'germany') {
+        prTime = Math.max(21, prTime - 3); // Germany's new Opportunity Card/Fast-track PR
+      } else if (country === 'italy') {
+        score -= 10;
+        prTime = Math.max(36, prTime + 12); // Italy PR takes longer
+      } else if (country === 'croatia') {
+        prTime = Math.max(36, prTime + 6);
+      }
+
+      // Cap score at 100 and min at 30
+      score = Math.max(30, Math.min(100, score));
+
+      // Update UI outputs
+      document.getElementById('set-score').innerText = `${Math.round(score)} / 100`;
+      document.getElementById('set-score-bar').style.width = `${score}%`;
+      document.getElementById('set-trend').innerText = `Rising (+${data.trend}%)`;
+      document.getElementById('set-pr-time').innerText = `${prTime} Months`;
+
+      // Build recommendation roadmap text
+      let adviceHTML = `<strong>Target Country Status:</strong> Relocating to <strong>${country.toUpperCase()}</strong> in the field of <strong>${data.label}</strong>.<br><br>`;
+      adviceHTML += `<strong>Market Insight:</strong> ${data.shortage}<br><br>`;
+      
+      if (lang === 'none') {
+        adviceHTML += `⚠️ <strong>Critical Action Required:</strong> You selected "No Language Skills". Relocating without speaking local languages limits job prospects by 75% in Europe. We highly advise acquiring at least <strong>B1 level</strong> in local languages to secure higher salary brackets.`;
+      } else {
+        adviceHTML += `🎉 <strong>Settlement Advantage:</strong> Your language level provides a <strong>+${langBonus}% job placement boost</strong> and qualifies you for fast-track permanent residency under local laws!`;
+      }
+
+      document.getElementById('set-advice').innerHTML = adviceHTML;
+    }
+
+    // Run initial calculations on load
+    window.onload = function() {
+      runRelocationCalc();
+      runSalaryCalc();
+      runSettlementCalc();
+    };
+  </script>
+</body>
+</html>
