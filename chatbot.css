@@ -17,16 +17,14 @@
   position: fixed;
   bottom: 28px;
   left: 28px;
-  width: 56px;
-  height: 56px;
   background: var(--gmo-navy);
   border: 2px solid var(--gmo-gold);
-  border-radius: 50%;
+  border-radius: 30px;
   color: var(--gmo-white);
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+  gap: 10px;
+  padding: 12px 20px;
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 6px 20px rgba(14, 27, 48, 0.3);
@@ -34,17 +32,22 @@
 }
 
 .gmo-chatbot-toggle:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 0 10px 30px rgba(184, 150, 62, 0.4);
   background: var(--gmo-gold);
   color: var(--gmo-navy);
 }
 
-.gmo-chatbot-toggle svg {
-  fill: currentColor;
-  width: 26px;
-  height: 26px;
-  transition: var(--gmo-transition);
+.gmo-toggle-icon {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.gmo-toggle-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* Chatbot Window Container */
