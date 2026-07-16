@@ -206,10 +206,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('gmoLeadEmail').value;
       const phone = document.getElementById('gmoLeadPhone').value;
 
+      // Show success message immediately in chat
       leadForm.innerHTML = `<p style="color:var(--gmo-gold);font-weight:600;margin:0">✓ Thank you, ${name}! We have received your request. A specialist will call you at ${phone} soon.</p>`;
       
-      // Store lead data locally (could be forwarded to an API webhook)
-      console.log('Lead Captured:', { name, email, phone });
+      // Submit lead to FormSubmit.co via AJAX (delivers straight to gmoverseaz@gmail.com)
+      fetch("https://formsubmit.co/ajax/gmoverseaz@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          Name: name,
+          Email: email,
+          Phone: phone,
+          Source: "AI Chatbot Widget Lead Form"
+        })
+      })
+      .then(response => response.json())
+      .then(data => console.log('Lead emailed successfully:', data))
+      .catch(error => console.error('Error sending lead email:', error));
     });
   }
 
