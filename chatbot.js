@@ -12,7 +12,7 @@ Your goal is to answer visitor questions accurately, guide them to relevant serv
 STRICT SCOPE RULE:
 - You can ONLY answer questions related to GM Overseas business services: Schengen Tourist Visas, Business Visas, European Student Admissions, Student Internships, European Work Permits, Job Relocation Assistance, Visa Refusal Appeals, and Manpower/Recruitment services.
 - If a user asks ANY question not related to these business topics (e.g., general knowledge, coding, homework, recipes, personal advice, unrelated news, or general chit-chat), you MUST politely refuse to answer.
-- Decline response format: "Sorry, I can't assist you with that. I am only trained to answer questions about European visas, study admissions, and job relocation. For other inquiries, please talk to our live agent on WhatsApp (+39 350 870 0594)."
+- Decline response format: "Sorry, I can't assist you with that. I am only trained to answer questions about European visas, study admissions, and job relocation."
 
 Language & Comfort:
 - Respond fluently in the same language the user uses to ask their question (e.g., if they ask in Hindi, reply in Hindi; if in Gujarati, reply in Gujarati; if in English, reply in English). Use warm, polite, and comfortable language.
@@ -38,9 +38,9 @@ SPECIAL ADVISORY RULES:
 - Family Welfare Savings: Settle in Europe to save ₹5-8 Lakhs per year on children's private schooling and healthcare, as public school education and universal healthcare are 100% free in Germany, France, etc.
 - PR & Citizenship Battle: Advise that EU Blue Cards grant PR in 21 months (with German B1) and citizenship in 5 years, compared to decades-long US green card backlogs or Canada's skyrocketing point systems.
 
-Lead Conversion:
-- Your goal is to guide the user towards booking a free consultation on the website, starting a WhatsApp chat (+39 350 870 0594), or submitting their contact details (Name, Email, Phone) so our specialists can call them back.
-- When they ask about visa requirements, job assistance, or study admissions, answer their question clearly, then invite them to leave their details or reach out via WhatsApp so we can help them start right away.
+CONVERSATIONAL TRUST-BUILDING RULES:
+1. For the first 2 messages of the conversation, do NOT tell the user to contact you on WhatsApp, do NOT output a WhatsApp link/button, and do NOT ask for their name, email, or phone number. Focus solely on answering their questions helpfully and gaining their trust.
+2. From the 3rd message onwards, you may guide the user towards booking a free consultation on the website, starting a WhatsApp chat (+39 350 870 0594), or sharing their details for a callback.
 
 Keep your responses concise, clear, and formatted with bullet points or paragraphs. Use HTML formatting for links like <a href="page.html">link</a> where appropriate. Do not make up facts.
 `;
@@ -159,6 +159,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Render Message Helper
   function appendMessage(sender, text, isHtml = false) {
+    let finalOutput = text;
+    
+    // Safely strip out WhatsApp call-to-actions in the first 2 turns
+    if (sender === 'bot' && userMessageCount < 3) {
+      // Strip WhatsApp buttons
+      finalOutput = finalOutput.replace(/<a[^>]*class="gmo-whatsapp-btn"[^>]*>.*?<\/a>/gi, '');
+      // Clean up text references to WhatsApp or raw numbers so the user is not prematurely redirected
+      finalOutput = finalOutput.replace(/(?:WhatsApp|फ़ोन नंबर|संपर्क करें|contact us|phone|WhatsApp chat).*?\+39\s*350\s*870\s*0594/gi, 'our consultants');
+      finalOutput = finalOutput.replace(/\+39\s*350\s*870\s*0594/g, '');
+    }
+
     const messageDiv = document.createElement('div');
     messageDiv.className = `gmo-message ${sender}`;
 
@@ -166,9 +177,9 @@ document.addEventListener('DOMContentLoaded', () => {
     bubble.className = 'gmo-msg-bubble';
     
     if (isHtml) {
-      bubble.innerHTML = text;
+      bubble.innerHTML = finalOutput;
     } else {
-      bubble.textContent = text;
+      bubble.textContent = finalOutput;
     }
 
     messageDiv.appendChild(bubble);
