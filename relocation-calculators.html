@@ -621,6 +621,7 @@
           <div class="lead-box">
             <h3>Secure Your University Admission &amp; PR</h3>
             <p>Our direct partnership with recommended universities ensures fast acceptance letters, full loan approvals, and seamless visa processing.</p>
+            <button onclick="openModal()" class="btn-lead" style="margin-bottom: 12px; cursor: pointer;">🔎 Re-Open Strategy Report</button>
             <a href="index.html#contact" class="btn-lead">Apply to Partner University Now →</a>
           </div>
         </div>
@@ -628,6 +629,34 @@
     </div>
 
   </div>
+
+  <!-- Modal Popup Structure -->
+  <div id="recModal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(13,27,62,0.6); backdrop-filter:blur(5px); justify-content:center; align-items:center;">
+    <div style="background:var(--white); margin:auto; padding:40px; border-top:4px solid var(--gold); border-radius:4px; max-width:650px; width:90%; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.3); animation:modalSlide 0.4s ease; color: var(--navy);">
+      <button onclick="closeModal()" style="position:absolute; right:20px; top:15px; font-size:1.5rem; color:var(--navy); background:none; border:none; cursor:pointer; font-weight:bold;">✕</button>
+      <div style="text-align:center; margin-bottom:20px;">
+        <span style="font-size:3.5rem;">🎓</span>
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--navy); margin-top:10px;">Your Custom Relocation Strategy</h2>
+        <div style="display:inline-block; background:rgba(184,150,62,0.1); color:var(--gold); border:1px solid var(--border); padding:6px 16px; border-radius:2px; font-size:0.85rem; font-weight:bold; margin-top:8px;">
+          Visa Success Score: <span id="modal-score">0</span>/100
+        </div>
+      </div>
+      <div id="modal-content-body" style="font-size:0.95rem; line-height:1.7; color:var(--navy); margin-bottom:24px;">
+        <!-- Populated dynamically -->
+      </div>
+      <div style="display:flex; gap:16px; justify-content:center;">
+        <a href="index.html#contact" class="btn-lead" onclick="closeModal()" style="display:inline-block; text-align:center; padding:12px 24px; text-decoration:none;">Apply to Partner University →</a>
+        <button onclick="closeModal()" style="background:#eae7df; color:var(--navy); border:none; padding:12px 24px; border-radius:2px; font-weight:600; cursor:pointer;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes modalSlide {
+      from { transform: translateY(30px); opacity:0; }
+      to { transform: translateY(0); opacity:1; }
+    }
+  </style>
 
   <!-- FOOTER -->
   <footer>
@@ -905,13 +934,31 @@
       battleCardHTML += `<tr><td>Canada</td><td>36 - 60 Months</td><td>Skyrocketing Express Entry cutoffs</td><td>Restricted to Master's only (2024 rules)</td></tr>`;
       battleCardHTML += `</tbody></table>`;
       document.getElementById('comp-battlecard').innerHTML = battleCardHTML;
+
+      // Populate and trigger Modal Popup
+      document.getElementById('modal-score').innerText = score;
+      document.getElementById('modal-content-body').innerHTML = adviceHTML + "<br>" + battleCardHTML;
+      
+      // Prevent popup on initial window load calculations
+      if (typeof isInitialLoad === 'undefined') {
+        openModal();
+      }
+    }
+
+    function openModal() {
+      document.getElementById('recModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('recModal').style.display = 'none';
     }
 
     // Run initial calculations on load
+    let isInitialLoad = true;
     window.onload = function() {
       runRelocationCalc();
       runSalaryCalc();
       runSettlementCalc();
+      isInitialLoad = false; // set to false after initial load completes
     };
   </script>
 </body>
