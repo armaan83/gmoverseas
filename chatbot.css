@@ -29,6 +29,45 @@
   z-index: 1000;
   box-shadow: 0 6px 20px rgba(14, 27, 48, 0.3);
   transition: var(--gmo-transition);
+  animation: gmoJumpAndGlow 4s ease-in-out infinite;
+}
+
+@keyframes gmoJumpAndGlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(14, 27, 48, 0.3);
+  }
+  15% {
+    transform: translateY(-12px) scaleY(1.05);
+    box-shadow: 0 16px 28px rgba(184, 150, 62, 0.4);
+  }
+  30% {
+    transform: translateY(0) scaleY(0.95);
+    box-shadow: 0 6px 20px rgba(14, 27, 48, 0.3);
+  }
+  40% {
+    transform: translateY(-6px) scaleY(1.02);
+    box-shadow: 0 12px 22px rgba(184, 150, 62, 0.3);
+  }
+  50% {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(14, 27, 48, 0.3);
+  }
+  60% {
+    box-shadow: 0 0 18px rgba(184, 150, 62, 0.7);
+  }
+  65% {
+    box-shadow: 0 0 6px rgba(184, 150, 62, 0.2);
+  }
+  70% {
+    box-shadow: 0 0 20px rgba(184, 150, 62, 0.8);
+  }
+  75% {
+    box-shadow: 0 0 4px rgba(184, 150, 62, 0.15);
+  }
+  80% {
+    box-shadow: 0 0 14px rgba(184, 150, 62, 0.55);
+  }
 }
 
 .gmo-chatbot-toggle:hover {
