@@ -416,7 +416,7 @@
               <span id="rel-visa-fee" class="metric-val">₹0</span>
             </div>
             <div class="metric-item">
-              <span class="metric-label">Required Living Proof (Blocked Account)</span>
+              <span id="rel-proof-label" class="metric-label">Required Living Proof (Blocked Account)</span>
               <span id="rel-proof-fee" class="metric-val gold">₹0</span>
             </div>
             <div class="metric-item">
@@ -424,9 +424,10 @@
               <span id="rel-setup-fee" class="metric-val">₹0</span>
             </div>
             <div class="metric-item" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 10px;">
-              <span class="metric-label">Cost of Living vs. India Index</span>
-              <span id="rel-col-index" class="metric-val gold">0% Higher</span>
+              <span id="rel-savings-label" class="metric-label">Absolute Monthly Savings Boost</span>
+              <span id="rel-col-index" class="metric-val gold">0% Higher Savings</span>
             </div>
+            <div id="rel-visa-notes" style="font-size: 0.76rem; color: var(--gold-pale); margin-top: 14px; text-align: left; line-height: 1.4; border-top: 1px dashed rgba(255,255,255,0.15); padding-top: 10px; display: none;"></div>
           </div>
 
           <div class="lead-box">
@@ -747,6 +748,8 @@
       sweden: { name: "Sweden", visaFee: 7200, blockedAmount: 920000, flightSetup: 150000, colIndex: 148, workBlocked: 440000 }
     };
 
+    const JOBSEEKER_COUNTRIES = ["germany", "austria", "spain", "portugal", "sweden"];
+
     function runRelocationCalc() {
       const country = document.getElementById('rel-country').value;
       const category = document.getElementById('rel-visa').value;
@@ -766,7 +769,37 @@
       document.getElementById('rel-proof-fee').innerText = `₹${Math.round(blockedAmount).toLocaleString('en-IN')}`;
       document.getElementById('rel-setup-fee').innerText = `₹${Math.round(setupFee).toLocaleString('en-IN')}`;
       document.getElementById('rel-total-capital').innerText = `₹${Math.round(totalCapital).toLocaleString('en-IN')}`;
-      document.getElementById('rel-col-index').innerText = `+${data.colIndex}% Higher`;
+
+      // 1. Dynamic Proof Label & Notes based on Job Seeker Availability
+      const hasJobseeker = JOBSEEKER_COUNTRIES.includes(country);
+      const labelElem = document.getElementById('rel-proof-label');
+      const notesElem = document.getElementById('rel-visa-notes');
+
+      if (category === 'work') {
+        if (hasJobseeker) {
+          labelElem.innerText = "Required Proof (Job Seeker Visa)";
+          notesElem.innerHTML = `✅ <strong>Job Seeker Visa Available:</strong> ${data.name} offers a dedicated Job Seeker Visa. You can travel there to search for work before securing employer sponsorship.`;
+          notesElem.style.display = "block";
+        } else {
+          labelElem.innerText = "Required Proof (Sponsored Work Permit)";
+          notesElem.innerHTML = `⚠️ <strong>No Job Seeker Visa:</strong> ${data.name} does not offer a standalone Job Seeker Visa. You must secure a valid job offer and employer sponsorship first to apply for a work permit.`;
+          notesElem.style.display = "block";
+        }
+      } else {
+        labelElem.innerText = "Required Living Proof (Blocked Account)";
+        notesElem.style.display = "none";
+      }
+
+      // 2. Dynamic Monthly Savings Boost (INR) vs India
+      const estMonthlyEuro = 1200 + (data.colIndex * 22);
+      const estExpensesEuro = 800 + (data.colIndex * 10);
+      const netSavingsLocal = estMonthlyEuro - estExpensesEuro;
+      const rate = (country === 'uk') ? 105 : (country === 'canada' ? 62 : 90);
+      const savingsINR = netSavingsLocal * rate;
+      const indiaSavings = 22000;
+      const savingsBoost = Math.round(((savingsINR / indiaSavings) - 1) * 100);
+
+      document.getElementById('rel-col-index').innerText = `+${savingsBoost}% Higher Savings`;
     }
 
     // ================= TOOL 2: SALARY COMPARER =================
