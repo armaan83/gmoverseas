@@ -1,8 +1,9 @@
 /* ===== GM OVERSEAS AI CHATBOT ENGINE ===== */
 
-// CONFIGURATION: Add your Gemini API Key here to enable full LLM responses!
-// If left empty, the chatbot will use the built-in Smart Q&A Knowledge Base.
+// CONFIGURATION: Add your API keys here.
+// If both keys are empty, the chatbot will use the built-in Smart Q&A Knowledge Base.
 const GEMINI_API_KEY = "AQ.A" + "b8RN6Ji_q4rPnrdfHOqi76RG81ruQidiFWOpx9fCyTEifHtDg"; 
+const AGNES_API_KEY = ""; // Add your backup Agnes AI API key here as a fallback
 
 const SYSTEM_PROMPT = `
 You are the GM Overseas Virtual Assistant, a friendly and professional AI advisor for GM Overseas (India's premier European visa, study abroad, and job relocation consultancy).
@@ -229,7 +230,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Bot Response Logic (Keyword matching or Gemini API)
+  // Helper to format and render bot responses
+  function renderBotText(rawText) {
+    let botText = rawText
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+    appendMessage('bot', botText, true);
+  }
+
+  // Backup Call to Agnes AI API (OpenAI-compatible)
+  async function callBackupAgnesAI(userMsg) {
+    if (!AGNES_API_KEY) return null;
+    try {
+      console.log("Attempting failover request to Agnes AI...");
+      const response = await fetch("https://apihub.agnes-ai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${AGNES_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "gemini-1.5-flash", 
+          messages: [
+            { role: "system", content: SYSTEM_PROMPT },
+            { role: "user", content: userMsg }
+          ]
+        })
+      });
+
+      if (!response.ok) {
+        console.error("Agnes AI API Error:", await response.text());
+        return null;
+      }
+
+      const data = await response.json();
+      if (data.choices && data.choices[0] && data.choices[0].message) {
+        return data.choices[0].message.content;
+      }
+      return null;
+    } catch (err) {
+      console.error("Agnes AI Fetch Exception:", err);
+      return null;
+    }
+  }
+
+  // 8. Bot Response Logic (Keyword matching, Gemini API, or Agnes AI backup)
   async function handleBotResponse(userMsg) {
     showTypingIndicator();
 
@@ -249,31 +295,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const data = await response.json();
-        hideTypingIndicator();
 
         if (!response.ok) {
           console.error('Gemini API Error Response:', data);
+          // Try Agnes AI backup
+          const backupText = await callBackupAgnesAI(userMsg);
+          hideTypingIndicator();
+          if (backupText) {
+            renderBotText(backupText);
+            return;
+          }
           appendMessage('bot', "Connection issue: please verify your Gemini API key is correct and valid.", true);
           appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
           appendLeadForm();
           return;
         }
 
+        hideTypingIndicator();
         if (data.candidates && data.candidates[0].content.parts[0].text) {
-          let botText = data.candidates[0].content.parts[0].text;
-          // Simple markdown bold/italic translation to HTML
-          botText = botText
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/\n/g, '<br>');
-          appendMessage('bot', botText, true);
+          renderBotText(data.candidates[0].content.parts[0].text);
         } else {
+          // Try Agnes AI backup
+          const backupText = await callBackupAgnesAI(userMsg);
+          if (backupText) {
+            renderBotText(backupText);
+            return;
+          }
           appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
           appendLeadForm();
         }
       } catch (error) {
         console.error('Gemini API Error:', error);
+        // Try Agnes AI backup
+        const backupText = await callBackupAgnesAI(userMsg);
         hideTypingIndicator();
+        if (backupText) {
+          renderBotText(backupText);
+          return;
+        }
         appendMessage('bot', "I ran into a small connection issue, but I can help you directly!", true);
         appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
         appendLeadForm();
@@ -281,7 +340,17 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Case B: Built-in Smart Knowledge Base (Keyword matching)
+    // Case B: No Gemini key, but backup Agnes key is available
+    if (AGNES_API_KEY) {
+      const backupText = await callBackupAgnesAI(userMsg);
+      hideTypingIndicator();
+      if (backupText) {
+        renderBotText(backupText);
+        return;
+      }
+    }
+
+    // Case C: Built-in Smart Knowledge Base (Keyword matching)
     hideTypingIndicator();
     const query = userMsg.toLowerCase();
 
