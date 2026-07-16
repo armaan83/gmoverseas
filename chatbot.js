@@ -251,6 +251,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         hideTypingIndicator();
 
+        if (!response.ok) {
+          console.error('Gemini API Error Response:', data);
+          appendMessage('bot', "Connection issue: please verify your Gemini API key is correct and valid.", true);
+          appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
+          appendLeadForm();
+          return;
+        }
+
         if (data.candidates && data.candidates[0].content.parts[0].text) {
           let botText = data.candidates[0].content.parts[0].text;
           // Simple markdown bold/italic translation to HTML
