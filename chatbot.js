@@ -2,7 +2,7 @@
 
 // CONFIGURATION: Add your Gemini API Key here to enable full LLM responses!
 // If left empty, the chatbot will use the built-in Smart Q&A Knowledge Base.
-const GEMINI_API_KEY = "AQ.Ab8RN6LWuPJBD9S8kSYnFWyuOVbu8C1d38un03VYVrgx8eOqCg"; 
+const GEMINI_API_KEY = "AQ.Ab8RN6LChCt67eKcIEej5TRjtk9KLn9Ow3vR5uAIIAudBBH5LA"; 
 
 const SYSTEM_PROMPT = `
 You are the GM Overseas Virtual Assistant, a friendly and professional AI advisor for GM Overseas (India's premier European visa, study abroad, and job relocation consultancy).
