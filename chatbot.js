@@ -60,9 +60,9 @@ const KNOWLEDGE_BASE = {
   
   appeal: `Visa refused? Don't lose hope. We analyze visa refusal letters, identify grounds for rejection, and draft professional appeal letters to strengthen your case for reapplication.<br><br>👉 Visit our <a href="visa-refusal-appeal.html">Visa Refusal Appeal page</a>.`,
   
-  contact: `You can connect directly with our consultants via WhatsApp at <a href="https://wa.me/393508700594" target="_blank">+39 350 870 0594</a> or fill out our free consultation form on the website.`,
+  contact: `You can connect directly with our consultants on WhatsApp:<br><br><a href="https://wa.me/393508700594" target="_blank" class="gmo-whatsapp-btn"><svg style="width:16px;height:16px;fill:currentColor;vertical-align:middle;margin-right:6px;" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.8 5.5.8 11.7c0 2 .5 3.9 1.5 5.6L.5 23.5l6.4-1.7c1.6.9 3.5 1.3 5.4 1.3 6.2 0 11.2-5 11.2-11.2 0-3-1.2-5.8-3.4-8zm-8.1 17.6c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.6.9.9-3.5-.2-.3c-1-1.5-1.5-3.3-1.5-5.1 0-5.1 4.2-9.3 9.3-9.3 2.5 0 4.8 1 6.6 2.7 1.8 1.8 2.7 4.1 2.7 6.6 0 5.1-4.2 9.3-9.3 9.3zm5.1-6.9c-.3-.1-1.6-.8-1.9-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.2-1.3c-.8-.7-1.3-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.2.3-.3.1-.1.1-.2.2-.3.1-.2 0-.3 0-.4s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4S7.3 8.3 7.3 9.6s1 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.1-1.3-.1-.1-.3-.2-.6-.3z"/></svg>Chat on WhatsApp</a><br><br>Or fill out our free consultation form on the website.`,
   
-  fallback: `Sorry, I can only assist you with questions related to European visas, student admissions, work permits, and job relocation services at GM Overseas.<br><br>For other inquiries, please talk to our live agent on **WhatsApp** (+39 350 870 0594) or request a callback by sharing your details below:`
+  fallback: `Sorry, I can only assist you with questions related to European visas, student admissions, work permits, and job relocation services at GM Overseas.<br><br>For other inquiries, please talk to our live agent on WhatsApp:<br><br><a href="https://wa.me/393508700594" target="_blank" class="gmo-whatsapp-btn"><svg style="width:16px;height:16px;fill:currentColor;vertical-align:middle;margin-right:6px;" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.8 5.5.8 11.7c0 2 .5 3.9 1.5 5.6L.5 23.5l6.4-1.7c1.6.9 3.5 1.3 5.4 1.3 6.2 0 11.2-5 11.2-11.2 0-3-1.2-5.8-3.4-8zm-8.1 17.6c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.6.9.9-3.5-.2-.3c-1-1.5-1.5-3.3-1.5-5.1 0-5.1 4.2-9.3 9.3-9.3 2.5 0 4.8 1 6.6 2.7 1.8 1.8 2.7 4.1 2.7 6.6 0 5.1-4.2 9.3-9.3 9.3zm5.1-6.9c-.3-.1-1.6-.8-1.9-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.2-1.3c-.8-.7-1.3-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.2.3-.3.1-.1.1-.2.2-.3.1-.2 0-.3 0-.4s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4S7.3 8.3 7.3 9.6s1 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.1-1.3-.1-.1-.3-.2-.6-.3z"/></svg>Chat on WhatsApp</a><br><br>Or request a callback by sharing your details below:`
 };
 
 // Initialize Chatbot when DOM is ready
@@ -257,6 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/\n/g, '<br>');
+
+    // Automatically convert text WhatsApp mentions or links to a beautiful green button
+    const waIcon = `<svg style="width:16px;height:16px;fill:currentColor;vertical-align:middle;margin-right:6px;" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.8 5.5.8 11.7c0 2 .5 3.9 1.5 5.6L.5 23.5l6.4-1.7c1.6.9 3.5 1.3 5.4 1.3 6.2 0 11.2-5 11.2-11.2 0-3-1.2-5.8-3.4-8zm-8.1 17.6c-1.7 0-3.4-.5-4.8-1.3l-.3-.2-3.6.9.9-3.5-.2-.3c-1-1.5-1.5-3.3-1.5-5.1 0-5.1 4.2-9.3 9.3-9.3 2.5 0 4.8 1 6.6 2.7 1.8 1.8 2.7 4.1 2.7 6.6 0 5.1-4.2 9.3-9.3 9.3zm5.1-6.9c-.3-.1-1.6-.8-1.9-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1s-1.2-.4-2.2-1.3c-.8-.7-1.3-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.2.3-.3.1-.1.1-.2.2-.3.1-.2 0-.3 0-.4s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4S7.3 8.3 7.3 9.6s1 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4.1.6.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.1-1.3-.1-.1-.3-.2-.6-.3z"/></svg>`;
+    const waBtn = `<a href="https://wa.me/393508700594" target="_blank" class="gmo-whatsapp-btn">${waIcon}Chat on WhatsApp</a>`;
+    
+    // Replace raw phone numbers, plain wa.me links, or existing anchor links that direct to WhatsApp
+    botText = botText.replace(/(?:<a[^>]*href="https:\/\/wa\.me\/393508700594"[^>]*>.*?<\/a>|https:\/\/wa\.me\/393508700594|\+39\s*350\s*870\s*0594)/gi, waBtn);
+
     appendMessage('bot', botText, true);
   }
 

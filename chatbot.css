@@ -437,3 +437,26 @@
     transform: translateY(0);
   }
 }
+
+/* WhatsApp Clickable Button in Chat */
+.gmo-whatsapp-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  background: #25d366 !important;
+  color: #ffffff !important;
+  padding: 10px 18px !important;
+  border-radius: 24px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  margin-top: 10px !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3) !important;
+  transition: all 0.3s !important;
+}
+.gmo-whatsapp-btn:hover {
+  background: #128c7e !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4) !important;
+}
