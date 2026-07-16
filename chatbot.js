@@ -67,6 +67,9 @@ const KNOWLEDGE_BASE = {
 
 // Initialize Chatbot when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  let userMessageCount = 0;
+  let leadFormShown = false;
+
   // 1. Inject chatbot.css into <head> if not already loaded
   if (!document.getElementById('gmo-chatbot-style')) {
     const link = document.createElement('link');
@@ -199,6 +202,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Helper to check conditions and trigger Lead Capture Form
+  function checkAndShowLeadForm() {
+    if (userMessageCount >= 3 && !leadFormShown) {
+      leadFormShown = true;
+      setTimeout(() => {
+        appendMessage('bot', "By the way, to give you customized visa advice or check university admission eligibility, would you like our senior advisor to call you back for a free consultation? It takes less than 30 seconds to request a callback below.", true);
+        appendLeadForm();
+      }, 1000);
+    }
+  }
+
   // 7. Inject Lead Capture Form
   function appendLeadForm() {
     const formContainer = document.createElement('div');
@@ -266,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     botText = botText.replace(/(?:<a[^>]*href="https:\/\/wa\.me\/393508700594"[^>]*>.*?<\/a>|https:\/\/wa\.me\/393508700594|\+39\s*350\s*870\s*0594)/gi, waBtn);
 
     appendMessage('bot', botText, true);
+    checkAndShowLeadForm();
   }
 
   // Backup Call to Agnes AI API (OpenAI-compatible)
@@ -336,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           appendMessage('bot', "Connection issue: please verify your Gemini API key is correct and valid.", true);
           appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
-          appendLeadForm();
+          checkAndShowLeadForm();
           return;
         }
 
@@ -351,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
           }
           appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
-          appendLeadForm();
+          checkAndShowLeadForm();
         }
       } catch (error) {
         console.error('Gemini API Error:', error);
@@ -364,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         appendMessage('bot', "I ran into a small connection issue, but I can help you directly!", true);
         appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
-        appendLeadForm();
+        checkAndShowLeadForm();
       }
       return;
     }
@@ -399,8 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
       appendMessage('bot', KNOWLEDGE_BASE.contact, true);
     } else {
       appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
-      appendLeadForm();
     }
+    checkAndShowLeadForm();
   }
 
   // 9. Input Form Submission
@@ -412,6 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
     appendMessage('user', userMsg);
     chatInput.value = '';
 
+    userMessageCount++; // Increment message count!
     handleBotResponse(userMsg);
   });
 
@@ -425,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     appendMessage('user', `Tell me about ${questionText}`);
     
+    userMessageCount++; // Increment message count!
     showTypingIndicator();
     setTimeout(() => {
       hideTypingIndicator();
@@ -432,8 +449,8 @@ document.addEventListener('DOMContentLoaded', () => {
         appendMessage('bot', KNOWLEDGE_BASE[key], true);
       } else {
         appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
-        appendLeadForm();
       }
+      checkAndShowLeadForm();
     }, 800);
   });
 
