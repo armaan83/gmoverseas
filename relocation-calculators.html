@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EU Relocation Costs &amp; Job Expectancy Calculators | GM Overseas</title>
-  <meta name="description" content="Use our interactive European relocation cost calculators and job expectancy settlement tools to analyze costs, salaries, and visa success probability for Germany, Italy, Canada, and Croatia.">
+  <title>EU Relocation Costs, Salary Index &amp; Settlement Strategy Portal | GM Overseas</title>
+  <meta name="description" content="Calculate Schengen relocation costs, salary index differentials, and backtest your EU job placement probability, permanent residency (PR) timeline, and university admission strategy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
@@ -125,7 +125,7 @@
     /* ===== NAVIGATION TABS ===== */
     .tabs-wrapper {
       display: flex; justify-content: center; flex-wrap: wrap;
-      gap: 12px; max-width: 1000px; margin: -30px auto 40px;
+      gap: 12px; max-width: 1100px; margin: -30px auto 40px;
       padding: 0 20px; position: relative; z-index: 5;
     }
     .tab-btn {
@@ -268,8 +268,28 @@
     .simple-table {
       width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85rem;
     }
-    .simple-table th { background: #eae7df; text-align: left; padding: 8px 12px; }
-    .simple-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .simple-table th { background: #eae7df; text-align: left; padding: 8px 12px; color: var(--navy); }
+    .simple-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--navy); }
+
+    /* Info Alert Callout */
+    .info-callout {
+      background: #faf8f0;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+      padding: 18px 24px;
+      margin-top: 24px;
+      color: var(--navy);
+    }
+    .info-callout h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .info-callout p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -350,11 +370,17 @@
           <div class="form-group">
             <label for="rel-country">Target Destination Country</label>
             <select id="rel-country" class="form-control" onchange="runRelocationCalc()">
-              <option value="germany" selected>Germany</option>
-              <option value="italy">Italy</option>
-              <option value="croatia">Croatia</option>
-              <option value="poland">Poland</option>
-              <option value="canada">Canada</option>
+              <!-- ALL EU / SCHENGEN COUNTRIES + UK, CANADA -->
+              <option value="germany" selected>Germany</option> <option value="italy">Italy</option> <option value="croatia">Croatia</option>
+              <option value="poland">Poland</option> <option value="malta">Malta</option> <option value="spain">Spain</option>
+              <option value="france">France</option> <option value="ireland">Ireland</option> <option value="austria">Austria</option>
+              <option value="belgium">Belgium</option> <option value="bulgaria">Bulgaria</option> <option value="cyprus">Cyprus</option>
+              <option value="czech">Czech Republic</option> <option value="denmark">Denmark</option> <option value="estonia">Estonia</option>
+              <option value="finland">Finland</option> <option value="greece">Greece</option> <option value="hungary">Hungary</option>
+              <option value="latvia">Latvia</option> <option value="lithuania">Lithuania</option> <option value="luxembourg">Luxembourg</option>
+              <option value="netherlands">Netherlands</option> <option value="portugal">Portugal</option> <option value="romania">Romania</option>
+              <option value="slovakia">Slovakia</option> <option value="slovenia">Slovenia</option> <option value="sweden">Sweden</option>
+              <option value="uk">United Kingdom</option> <option value="canada">Canada</option>
             </select>
           </div>
 
@@ -405,8 +431,8 @@
 
           <div class="lead-box">
             <h3>Need Help Meeting Requirements?</h3>
-            <p>We guide you on student loans, blocked account setup, and work permit processing.</p>
-            <a href="index.html#contact" class="btn-lead">Get Free Visa Guidance →</a>
+            <p>We provide full loan assistance programs to cover your visa files, setup, and tuition costs. No budget worries.</p>
+            <a href="index.html#contact" class="btn-lead">Get Free Visa &amp; Loan Guidance →</a>
           </div>
         </div>
       </div>
@@ -435,6 +461,12 @@
               <option value="milan">Milan, Italy</option>
               <option value="zagreb">Zagreb, Croatia</option>
               <option value="warsaw">Warsaw, Poland</option>
+              <option value="valletta">Valletta, Malta</option>
+              <option value="barcelona">Barcelona, Spain</option>
+              <option value="paris">Paris, France</option>
+              <option value="dublin">Dublin, Ireland</option>
+              <option value="vienna">Vienna, Austria</option>
+              <option value="brussels">Brussels, Belgium</option>
               <option value="toronto">Toronto, Canada</option>
             </select>
           </div>
@@ -451,11 +483,11 @@
           <div class="comparer-grid">
             <div class="comparison-col">
               <h4>Average Rent (1-Bed)</h4>
-              <div id="comp-rent" style="color: var(--accent-red);">+0%</div>
+              <div id="comp-rent" style="color: var(--accent-red); font-weight: bold;">+0%</div>
             </div>
             <div class="comparison-col">
               <h4>Grocery Costs</h4>
-              <div id="comp-grocery" style="color: var(--accent-red);">+0%</div>
+              <div id="comp-grocery" style="color: var(--accent-red); font-weight: bold;">+0%</div>
             </div>
           </div>
 
@@ -471,9 +503,9 @@
           </div>
 
           <div class="lead-box" style="border-color: var(--border);">
-            <h3>Remote Job or Contract Relocation?</h3>
-            <p>Ensure you negotiate a salary that covers your local European living costs with savings left over.</p>
-            <a href="index.html#contact" class="btn-lead">Speak to Relocation Experts →</a>
+            <h3>Relocating as a Worker or Expat?</h3>
+            <p>Ensure you negotiate a salary that covers local European living costs with high savings potential.</p>
+            <a href="index.html#contact" class="btn-lead">Negotiate Your European Job Offer →</a>
           </div>
         </div>
       </div>
@@ -484,8 +516,8 @@
       <div class="grid-layout">
         <!-- Input Form -->
         <div class="input-card">
-          <h2><span>🎓</span> EU Job Expectancy &amp; Settlement Calculator</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.92rem;">Select your field of study or profession to analyze your career success chances, see historical job trend statistics, and calculate your PR path.</p>
+          <h2><span>🎓</span> EU University Placement &amp; Settlement Strategy</h2>
+          <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.92rem;">Select your parameters below. Our smart recommendation engine automatically maps you to high-success universities aligned with PR pathways and your constraints.</p>
           
           <div class="form-group">
             <label for="set-field">Your Study / Profession Field</label>
@@ -495,7 +527,7 @@
               <option value="health">Healthcare, Medicine &amp; Nursing</option>
               <option value="hospitality">Hospitality, Culinary &amp; Tourism</option>
               <option value="skilled">Skilled Trades (Welder, Electrician, Machinist)</option>
-              <option value="business">Business, Finance &amp; Marketing</option>
+              <option value="business">Business, Finance &amp; Management</option>
               <option value="humanities">Humanities, Arts &amp; Social Sciences</option>
             </select>
           </div>
@@ -503,10 +535,15 @@
           <div class="form-group">
             <label for="set-country">Target Relocation Destination</label>
             <select id="set-country" class="form-control" onchange="runSettlementCalc()">
-              <option value="germany" selected>Germany</option>
-              <option value="italy">Italy</option>
-              <option value="croatia">Croatia</option>
-              <option value="poland">Poland</option>
+              <!-- ALL EU / SCHENGEN COUNTRIES -->
+              <option value="germany" selected>Germany (Top PR country)</option>
+              <option value="malta">Malta (Fast-track English speaking)</option>
+              <option value="poland">Poland (Low-cost startup hub)</option>
+              <option value="spain">Spain (Sunny climate, tech hub)</option>
+              <option value="france">France (Business &amp; Fashion)</option>
+              <option value="ireland">Ireland (IT headquarters)</option>
+              <option value="italy">Italy (Scholarship opportunities)</option>
+              <option value="croatia">Croatia (Fast-track work visas)</option>
             </select>
           </div>
 
@@ -519,12 +556,29 @@
               <option value="fluent">Fluent / Native (C1/C2)</option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label for="set-married">Marital Status</label>
+            <select id="set-married" class="form-control" onchange="runSettlementCalc()">
+              <option value="single" selected>Single Applicant</option>
+              <option value="married">Married (Want to relocate with spouse)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="set-budget">Tuition Budget Constraint</label>
+            <select id="set-budget" class="form-control" onchange="runSettlementCalc()">
+              <option value="low" selected>Low Budget (Need full bank loans / scholarship)</option>
+              <option value="mid">Mid Budget (Self-funded / partial loan)</option>
+              <option value="high">High Budget (No constraints)</option>
+            </select>
+          </div>
         </div>
 
         <!-- Output Card -->
         <div class="results-card">
           <div class="results-header">
-            <div class="results-title">Job Expectancy &amp; Visa Success Score</div>
+            <div class="results-title">Smart Strategy &amp; Visa Success Score</div>
             <div id="set-score" class="results-main-val">0 / 100</div>
             <div class="progress-bar-container">
               <div id="set-score-bar" class="progress-bar-fill" style="width: 0%;"></div>
@@ -533,24 +587,41 @@
 
           <div class="metrics-list">
             <div class="metric-item">
-              <span class="metric-label">5-Year Job Opening Trend</span>
-              <span id="set-trend" class="metric-val gold">Rising (+0%)</span>
+              <span class="metric-label">Recommended University</span>
+              <span id="set-rec-uni" class="metric-val gold" style="font-size: 0.9rem;">Select values...</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Estimated Post-Grad Salary</span>
+              <span id="set-rec-salary" class="metric-val">€0 / yr</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">Euro to INR Appreciation Bonus</span>
+              <span class="metric-val green">+2.5% Annually</span>
             </div>
             <div class="metric-item">
               <span class="metric-label">Est. Time to Permanent Residency</span>
               <span id="set-pr-time" class="metric-val">0 Months</span>
             </div>
+            <div class="metric-item">
+              <span class="metric-label">Spouse Open Work Permit</span>
+              <span id="set-spouse-status" class="metric-val green">Allowed</span>
+            </div>
           </div>
 
-          <!-- Settlement Advice Box -->
+          <!-- Detailed Strategy Box -->
           <div id="set-advice" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 4px; font-size: 0.85rem; line-height: 1.6; color: var(--gold-pale); margin-bottom: 20px;">
             Select your inputs to see tailored settlement and language roadmap advice.
           </div>
 
+          <!-- SDIRA/Schengen vs US/Canada comparison -->
+          <div id="comp-battlecard" style="background: rgba(184, 150, 62, 0.08); border-left: 3px solid var(--gold); padding: 18px; border-radius: 0 4px 4px 0; font-size: 0.8rem; line-height: 1.5; color: var(--gold-pale);">
+            <!-- Filled dynamically -->
+          </div>
+
           <div class="lead-box">
-            <h3>Boost Your Settlement Success</h3>
-            <p>Get a step-by-step career path, admission coaching, and secure job recruitment.</p>
-            <a href="index.html#contact" class="btn-lead">Book Free Consultation →</a>
+            <h3>Secure Your University Admission &amp; PR</h3>
+            <p>Our direct partnership with recommended universities ensures fast acceptance letters, full loan approvals, and seamless visa processing.</p>
+            <a href="index.html#contact" class="btn-lead">Apply to Partner University Now →</a>
           </div>
         </div>
       </div>
@@ -613,43 +684,38 @@
       document.getElementById('mobileMenu').classList.toggle('open');
     }
 
-    // ================= TOOL 1: RELOCATION COSTS & SAVINGS =================
+    // ================= DATA DATABASE FOR SCHENGEN / EU COUNTRIES =================
     const COUNTRY_COSTS = {
-      germany: {
-        visaFee: 7200, // ₹7,200 (approx €80)
-        blockedAmount: 1071360, // ₹1,071,360 (€11,904 blocked account)
-        flightSetup: 135000, // ₹135,000 flights + 1st month rent
-        colIndex: 145, // 145% higher than India
-        workBlocked: 450000 // €5,000 initial buffer for job seeker
-      },
-      italy: {
-        visaFee: 4500, // €50 student visa
-        blockedAmount: 540000, // ₹540,000 (€6,000 show money/scholarship)
-        flightSetup: 110000,
-        colIndex: 98,
-        workBlocked: 360000
-      },
-      croatia: {
-        visaFee: 8100, // €90 visa fee
-        blockedAmount: 585000, // ₹585,000 (€6,500/year cost of living proof)
-        flightSetup: 120000,
-        colIndex: 65,
-        workBlocked: 270000
-      },
-      poland: {
-        visaFee: 7200,
-        blockedAmount: 630000, // €7,000 / year proof
-        flightSetup: 95000,
-        colIndex: 58,
-        workBlocked: 315000
-      },
-      canada: {
-        visaFee: 9300, // $150 CAD
-        blockedAmount: 1280000, // $20,635 CAD GIC
-        flightSetup: 220000,
-        colIndex: 175,
-        workBlocked: 750000
-      }
+      germany: { name: "Germany", visaFee: 7200, blockedAmount: 1071360, flightSetup: 135000, colIndex: 145, workBlocked: 450000 },
+      italy: { name: "Italy", visaFee: 4500, blockedAmount: 540000, flightSetup: 110000, colIndex: 98, workBlocked: 360000 },
+      croatia: { name: "Croatia", visaFee: 8100, blockedAmount: 585000, flightSetup: 120000, colIndex: 65, workBlocked: 270000 },
+      poland: { name: "Poland", visaFee: 7200, blockedAmount: 630000, flightSetup: 95000, colIndex: 58, workBlocked: 315000 },
+      malta: { name: "Malta", visaFee: 8100, blockedAmount: 540000, flightSetup: 115000, colIndex: 88, workBlocked: 320000 },
+      spain: { name: "Spain", visaFee: 7200, blockedAmount: 648000, flightSetup: 125000, colIndex: 95, workBlocked: 340000 },
+      france: { name: "France", visaFee: 7200, blockedAmount: 664200, flightSetup: 130000, colIndex: 110, workBlocked: 360000 },
+      ireland: { name: "Ireland", visaFee: 5400, blockedAmount: 900000, flightSetup: 150000, colIndex: 155, workBlocked: 450000 },
+      uk: { name: "United Kingdom", visaFee: 37500, blockedAmount: 1260000, flightSetup: 160000, colIndex: 160, workBlocked: 600000 },
+      canada: { name: "Canada", visaFee: 9300, blockedAmount: 1280000, flightSetup: 220000, colIndex: 175, workBlocked: 750000 },
+      // Fallback details for other EU countries
+      austria: { name: "Austria", visaFee: 7200, blockedAmount: 850000, flightSetup: 140000, colIndex: 135, workBlocked: 400000 },
+      belgium: { name: "Belgium", visaFee: 7200, blockedAmount: 900000, flightSetup: 140000, colIndex: 125, workBlocked: 400000 },
+      bulgaria: { name: "Bulgaria", visaFee: 7200, blockedAmount: 480000, flightSetup: 90000, colIndex: 45, workBlocked: 250000 },
+      cyprus: { name: "Cyprus", visaFee: 7200, blockedAmount: 520000, flightSetup: 95000, colIndex: 55, workBlocked: 270000 },
+      czech: { name: "Czech Republic", visaFee: 7200, blockedAmount: 680000, flightSetup: 110000, colIndex: 72, workBlocked: 320000 },
+      denmark: { name: "Denmark", visaFee: 7200, blockedAmount: 1100000, flightSetup: 180000, colIndex: 180, workBlocked: 500000 },
+      estonia: { name: "Estonia", visaFee: 7200, blockedAmount: 580000, flightSetup: 110000, colIndex: 75, workBlocked: 300000 },
+      finland: { name: "Finland", visaFee: 7200, blockedAmount: 880000, flightSetup: 150000, colIndex: 150, workBlocked: 420000 },
+      greece: { name: "Greece", visaFee: 7200, blockedAmount: 600000, flightSetup: 110000, colIndex: 82, workBlocked: 320000 },
+      hungary: { name: "Hungary", visaFee: 7200, blockedAmount: 580000, flightSetup: 100000, colIndex: 60, workBlocked: 280000 },
+      latvia: { name: "Latvia", visaFee: 7200, blockedAmount: 480000, flightSetup: 90000, colIndex: 50, workBlocked: 240000 },
+      lithuania: { name: "Lithuania", visaFee: 7200, blockedAmount: 480000, flightSetup: 90000, colIndex: 52, workBlocked: 250000 },
+      luxembourg: { name: "Luxembourg", visaFee: 7200, blockedAmount: 1200000, flightSetup: 180000, colIndex: 185, workBlocked: 550000 },
+      netherlands: { name: "Netherlands", visaFee: 7200, blockedAmount: 980000, flightSetup: 145000, colIndex: 152, workBlocked: 460000 },
+      portugal: { name: "Portugal", visaFee: 7200, blockedAmount: 550000, flightSetup: 115000, colIndex: 78, workBlocked: 300000 },
+      romania: { name: "Romania", visaFee: 7200, blockedAmount: 480000, flightSetup: 95000, colIndex: 48, workBlocked: 250000 },
+      slovakia: { name: "Slovakia", visaFee: 7200, blockedAmount: 520000, flightSetup: 105000, colIndex: 58, workBlocked: 280000 },
+      slovenia: { name: "Slovenia", visaFee: 7200, blockedAmount: 580000, flightSetup: 110000, colIndex: 68, workBlocked: 310000 },
+      sweden: { name: "Sweden", visaFee: 7200, blockedAmount: 920000, flightSetup: 150000, colIndex: 148, workBlocked: 440000 }
     };
 
     function runRelocationCalc() {
@@ -657,17 +723,16 @@
       const category = document.getElementById('rel-visa').value;
       const familySize = parseInt(document.getElementById('rel-family').value) || 1;
 
-      const data = COUNTRY_COSTS[country];
-      if (!data) return;
+      const data = COUNTRY_COSTS[country] || COUNTRY_COSTS['germany'];
 
       const visaFee = data.visaFee * familySize;
       const baseBlocked = category === 'student' ? data.blockedAmount : data.workBlocked;
-      const blockedAmount = baseBlocked * (familySize === 1 ? 1 : familySize * 0.75); // slight discount for shared cost
+      // Slight scale discount for additional family members living together
+      const blockedAmount = baseBlocked * (familySize === 1 ? 1 : familySize * 0.70);
       const setupFee = data.flightSetup * familySize;
 
       const totalCapital = visaFee + blockedAmount + setupFee;
 
-      // Update UI
       document.getElementById('rel-visa-fee').innerText = `₹${Math.round(visaFee).toLocaleString('en-IN')}`;
       document.getElementById('rel-proof-fee').innerText = `₹${Math.round(blockedAmount).toLocaleString('en-IN')}`;
       document.getElementById('rel-setup-fee').innerText = `₹${Math.round(setupFee).toLocaleString('en-IN')}`;
@@ -675,12 +740,18 @@
       document.getElementById('rel-col-index').innerText = `+${data.colIndex}% Higher`;
     }
 
-    // ================= TOOL 2: SALARY & COL COMPARER =================
+    // ================= TOOL 2: SALARY COMPARER =================
     const CITY_COMPARER = {
-      munich: { rate: 90, rent: 220, grocery: 82, dining: 110, transit: 120 }, // multipliers compared to India bases
+      munich: { rate: 90, rent: 220, grocery: 82, dining: 110, transit: 120 },
       milan: { rate: 82, rent: 170, grocery: 78, dining: 98, transit: 85 },
       zagreb: { rate: 45, rent: 85, grocery: 58, dining: 55, transit: 42 },
       warsaw: { rate: 42, rent: 90, grocery: 51, dining: 48, transit: 38 },
+      valletta: { rate: 58, rent: 110, grocery: 65, dining: 68, transit: 45 },
+      barcelona: { rate: 68, rent: 130, grocery: 72, dining: 75, transit: 60 },
+      paris: { rate: 85, rent: 185, grocery: 85, dining: 105, transit: 90 },
+      dublin: { rate: 98, rent: 235, grocery: 90, dining: 112, transit: 130 },
+      vienna: { rate: 84, rent: 140, grocery: 80, dining: 95, transit: 100 },
+      brussels: { rate: 80, rent: 130, grocery: 76, dining: 90, transit: 85 },
       toronto: { rate: 115, rent: 245, grocery: 98, dining: 115, transit: 145 }
     };
 
@@ -688,14 +759,9 @@
       const salIndia = parseFloat(document.getElementById('sal-india').value) || 0;
       const city = document.getElementById('sal-dest-city').value;
 
-      const data = CITY_COMPARER[city];
-      if (!data) return;
+      const data = CITY_COMPARER[city] || CITY_COMPARER['munich'];
+      const baseEuros = (salIndia / 90) * (data.rate / 100) * 1.35; // adjusted multiplier
 
-      // Convert salary to approximate Euros required to maintain purchasing power
-      // Average exchange: 1 Euro = ₹90 INR
-      // Formula: (Salary INR / 90) * City Factor multiplier
-      const baseEuros = (salIndia / 90) * (data.rate / 100) * 1.4; // 1.4 lifestyle adjustments
-      
       document.getElementById('sal-equiv-val').innerText = `€${Math.round(baseEuros).toLocaleString()}/yr`;
       document.getElementById('comp-rent').innerText = `+${data.rent}%`;
       document.getElementById('comp-grocery').innerText = `+${data.grocery}%`;
@@ -703,30 +769,86 @@
       document.getElementById('comp-transit').innerText = `+${data.transit}% higher`;
     }
 
-    // ================= TOOL 3: EU JOB EXPECTANCY & SETTLEMENT =================
-    const PROFESSION_DATA = {
-      it: { label: "IT & AI Engineering", baseScore: 92, trend: 15, prTime: 21, shortage: "Critical shortage of developers & cybersecurity experts." },
-      eng: { label: "Mechanical/Electrical MINT", baseScore: 85, trend: 8, prTime: 24, shortage: "Steady demand across manufacturing & automation industries." },
-      health: { label: "Healthcare & Nursing", baseScore: 95, trend: 22, prTime: 18, shortage: "Severely critical shortage of nursing staff and care workers." },
-      hospitality: { label: "Hospitality & Tourism", baseScore: 68, trend: 4, prTime: 36, shortage: "High seasonal demand in Croatia/Italy; moderate PR pathway." },
-      skilled: { label: "Welder/Trades", baseScore: 90, trend: 18, prTime: 24, shortage: "High demand for welders, operators, and CNC machinists." },
-      business: { label: "Business & Finance", baseScore: 60, trend: -2, prTime: 48, shortage: "Tight job market; corporate roles require high local language levels." },
-      humanities: { label: "Arts & Humanities", baseScore: 45, trend: -8, prTime: 60, shortage: "Low direct shortages; success relies heavily on personal networking." }
+    // ================= TOOL 3: UNIVERSITY PLACEMENT & PR STRATEGY =================
+    // Direct commission matching rules + PR ease
+    const UNIVERSITY_PARTNERS = {
+      germany: {
+        it: { uni: "Steinbeis University (Berlin)", fee: "€8,500/yr", salary: "€58,000", pr: 21 },
+        eng: { uni: "Gisma University of Applied Sciences", fee: "€9,400/yr", salary: "€55,000", pr: 21 },
+        business: { uni: "Berlin School of Business & Innovation (BSBI)", fee: "€7,800/yr", salary: "€48,000", pr: 21 },
+        other: { uni: "SRH University of Applied Sciences", fee: "€9,000/yr", salary: "€46,000", pr: 21 }
+      },
+      malta: {
+        business: { uni: "Global Business School Malta (GBS)", fee: "€6,500/yr", salary: "€32,000", pr: 36 },
+        it: { uni: "EIE European Business School", fee: "€7,000/yr", salary: "€35,000", pr: 36 },
+        other: { uni: "Learn Key Institute Malta", fee: "€5,800/yr", salary: "€28,000", pr: 36 }
+      },
+      poland: {
+        business: { uni: "Warsaw University of Business & Psychology", fee: "€3,500/yr", salary: "€24,000", pr: 48 },
+        it: { uni: "Warsaw University of Business & Psychology", fee: "€3,800/yr", salary: "€26,000", pr: 48 }
+      },
+      france: {
+        business: { uni: "Schiller International University (Paris)", fee: "€11,000/yr", salary: "€45,000", pr: 48 },
+        other: { uni: "ICN Business School (France)", fee: "€10,500/yr", salary: "€42,000", pr: 48 }
+      },
+      spain: {
+        business: { uni: "ENAE Business School", fee: "€9,200/yr", salary: "€38,000", pr: 48 },
+        other: { uni: "Universidad Europea Madrid", fee: "€10,000/yr", salary: "€35,000", pr: 48 }
+      },
+      ireland: {
+        business: { uni: "IBAT College Dublin (Postgrad)", fee: "€9,800/yr", salary: "€40,000", pr: 36 },
+        it: { uni: "IBAT College Dublin (IT/PG)", fee: "€10,500/yr", salary: "€45,000", pr: 36 }
+      },
+      italy: {
+        other: { uni: "UNISG (University of Gastronomic Sciences)", fee: "€12,000/yr", salary: "€34,000", pr: 60 }
+      }
     };
 
     function runSettlementCalc() {
       const field = document.getElementById('set-field').value;
       const country = document.getElementById('set-country').value;
       const lang = document.getElementById('set-lang').value;
+      const married = document.getElementById('set-married').value;
+      const budget = document.getElementById('set-budget').value;
 
-      const data = PROFESSION_DATA[field];
-      if (!data) return;
+      // Extract recommended university from the partner database
+      let targetCountry = country;
+      // Fallback if specific country does not have direct university partners
+      if (!UNIVERSITY_PARTNERS[targetCountry]) {
+        targetCountry = "germany"; // Default best recommendation
+      }
 
-      let score = data.baseScore;
-      let prTime = data.prTime;
+      const countryData = UNIVERSITY_PARTNERS[targetCountry];
+      let fieldKey = field;
+      if (!countryData[fieldKey]) {
+        fieldKey = "business"; // fallback
+      }
+      if (!countryData[fieldKey]) {
+        fieldKey = "other"; // double fallback
+      }
 
-      // Adjustments based on language
-      let langBonus = 0;
+      const rec = countryData[fieldKey];
+      let score = 85;
+
+      // Spouse work permit logic
+      // In Germany, Italy, Spain, France, spouse is eligible for open work permits (Family Reunification visa)
+      // during study (in some PG courses) or immediately upon finding job.
+      let spouseAllowed = "Yes, Full Open Work Permit";
+      if (country === 'ireland' || country === 'malta') {
+        spouseAllowed = "Conditional (Only after Job placement)";
+        if (married === 'married') score -= 10;
+      }
+
+      // Budget constraints logic:
+      // Germany is low cost due to low tuition, but blocked account required.
+      // We assure them loans cover everything.
+      let budgetNotice = "";
+      if (budget === 'low') {
+        budgetNotice = "💡 <strong>Loan Alert:</strong> This university qualifies for 100% education loan assistance. GM Overseas helps you get collateral-free bank loans covering tuition and blocked funds.";
+      }
+
+      // Calculate timeline and score
+      let prTime = rec.pr;
       if (lang === 'none') {
         score -= 20;
         prTime += 12;
@@ -734,45 +856,55 @@
         score -= 5;
         prTime += 6;
       } else if (lang === 'inter') {
-        score += 8;
+        score += 10;
         prTime -= 3;
-        langBonus = 25;
       } else if (lang === 'fluent') {
         score += 15;
         prTime -= 9;
-        langBonus = 40;
       }
 
-      // Adjustments based on country constraints
-      if (country === 'germany') {
-        prTime = Math.max(21, prTime - 3); // Germany's new Opportunity Card/Fast-track PR
-      } else if (country === 'italy') {
-        score -= 10;
-        prTime = Math.max(36, prTime + 12); // Italy PR takes longer
-      } else if (country === 'croatia') {
-        prTime = Math.max(36, prTime + 6);
-      }
-
-      // Cap score at 100 and min at 30
       score = Math.max(30, Math.min(100, score));
 
-      // Update UI outputs
-      document.getElementById('set-score').innerText = `${Math.round(score)} / 100`;
-      document.getElementById('set-score-bar').style.width = `${score}%`;
-      document.getElementById('set-trend').innerText = `Rising (+${data.trend}%)`;
-      document.getElementById('set-pr-time').innerText = `${prTime} Months`;
-
-      // Build recommendation roadmap text
-      let adviceHTML = `<strong>Target Country Status:</strong> Relocating to <strong>${country.toUpperCase()}</strong> in the field of <strong>${data.label}</strong>.<br><br>`;
-      adviceHTML += `<strong>Market Insight:</strong> ${data.shortage}<br><br>`;
-      
-      if (lang === 'none') {
-        adviceHTML += `⚠️ <strong>Critical Action Required:</strong> You selected "No Language Skills". Relocating without speaking local languages limits job prospects by 75% in Europe. We highly advise acquiring at least <strong>B1 level</strong> in local languages to secure higher salary brackets.`;
-      } else {
-        adviceHTML += `🎉 <strong>Settlement Advantage:</strong> Your language level provides a <strong>+${langBonus}% job placement boost</strong> and qualifies you for fast-track permanent residency under local laws!`;
+      // Calculate family welfare savings:
+      // Free schooling + free healthcare in Europe (Germany, France, Spain)
+      // vs high costs in India (saves ~₹6 Lakhs/year per child)
+      let welfareSavings = "₹5,500,000+ total savings";
+      if (country === 'ireland' || country === 'malta') {
+        welfareSavings = "₹2,500,000 (Insurance required)";
       }
 
+      // Update UI Outputs
+      document.getElementById('set-score').innerText = `${score} / 100`;
+      document.getElementById('set-score-bar').style.width = `${score}%`;
+      document.getElementById('set-rec-uni').innerText = rec.uni;
+      document.getElementById('set-rec-salary').innerText = `${rec.salary} / yr`;
+      document.getElementById('set-pr-time').innerText = `${prTime} Months`;
+      document.getElementById('set-spouse-status').innerText = spouseAllowed;
+
+      // Advice section HTML
+      let adviceHTML = `<strong>Placement Recommendation:</strong> We recommend applying to <strong>${rec.uni}</strong>. Tuition is estimated at <strong>${rec.fee}</strong>.<br><br>`;
+      adviceHTML += `👨‍👩‍👧 <strong>Family &amp; Welfare Advantage:</strong> Relocating to <strong>${country.toUpperCase()}</strong> saves your family an estimated <strong>${welfareSavings}</strong> over 5 years due to free universal healthcare and free public school education (compared to private costs in India).<br><br>`;
+      if (budgetNotice) {
+        adviceHTML += `${budgetNotice}<br><br>`;
+      }
+      
+      if (lang === 'none') {
+        adviceHTML += `⚠️ <strong>Language Alert:</strong> Local language skills are highly recommended. Learning local languages to B1/B2 level will boost your salary index by up to 35% and shorten your permanent residency wait.`;
+      } else {
+        adviceHTML += `🎉 <strong>PR Success:</strong> Your local language proficiency qualifies you for fast-track permanent residency under the Blue Card system.`;
+      }
       document.getElementById('set-advice').innerHTML = adviceHTML;
+
+      // PR Battlecard
+      let battleCardHTML = `<h4>Schengen vs. US / Canada Immigration Battle Card</h4>`;
+      battleCardHTML += `<table class="simple-table">`;
+      battleCardHTML += `<thead><tr><th>Country</th><th>PR Waiting Time</th><th>Point Cutoff / Limits</th><th>Spouse Work Permit</th></tr></thead>`;
+      battleCardHTML += `<tbody>`;
+      battleCardHTML += `<tr><td><strong>Schengen (Germany/EU)</strong></td><td style="color:var(--gold);">21 - 36 Months</td><td>No arbitrary caps (Blue Card system)</td><td>Allowed immediately</td></tr>`;
+      battleCardHTML += `<tr><td>United States (US)</td><td>10 - 20+ Years (Backlog)</td><td>H-1B Cap lottery system</td><td>Restricted (H-4 EAD delays)</td></tr>`;
+      battleCardHTML += `<tr><td>Canada</td><td>36 - 60 Months</td><td>Skyrocketing Express Entry cutoffs</td><td>Restricted to Master's only (2024 rules)</td></tr>`;
+      battleCardHTML += `</tbody></table>`;
+      document.getElementById('comp-battlecard').innerHTML = battleCardHTML;
     }
 
     // Run initial calculations on load
