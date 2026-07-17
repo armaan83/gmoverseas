@@ -415,11 +415,38 @@
 /* Responsive Mobile Layouts */
 @media (max-width: 480px) {
   .gmo-chatbot-toggle {
-    bottom: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
+    bottom: 20px !important;
+    left: 20px !important;
+    right: auto !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 15px rgba(14, 27, 48, 0.4) !important;
+  }
+  .gmo-chatbot-toggle .gmo-toggle-text {
+    display: none !important;
+  }
+  .gmo-chatbot-toggle .gmo-toggle-icon {
+    font-size: 1.5rem !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Symmetrical WhatsApp Float Button for Mobile */
+  .whatsapp-float {
+    bottom: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    width: 56px !important;
+    height: 56px !important;
+    z-index: 999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   
   .gmo-chatbot-window {
