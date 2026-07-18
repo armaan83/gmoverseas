@@ -1,0 +1,6 @@
+# Local work files — never publish to the public website repo
+commission.pdf
+commission_extracted.txt
+read_pdf.py
+*.py
+.DS_Store
