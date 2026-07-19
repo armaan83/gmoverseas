@@ -485,6 +485,9 @@
   @media (max-width: 768px) {
     .resources-grid { grid-template-columns: 1fr; }
   }
+
+  /* ===== MOBILE MENU: hide navbar+hamburger while open so ✕ is clickable ===== */
+  body.menu-open #navbar { opacity: 0; pointer-events: none; visibility: hidden; }
 </style>
 
 <section class="section" id="resources">
@@ -1124,11 +1127,11 @@
   // ===== MOBILE MENU (global, robust) =====
   window.openMobileMenu = function() {
     var m = document.getElementById('mobileMenu');
-    if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    if (m) { m.classList.add('open'); document.body.classList.add('menu-open'); document.body.style.overflow = 'hidden'; }
   };
   window.closeMobileMenu = function() {
     var m = document.getElementById('mobileMenu');
-    if (m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+    if (m) { m.classList.remove('open'); document.body.classList.remove('menu-open'); document.body.style.overflow = ''; }
   };
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') window.closeMobileMenu();
