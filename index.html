@@ -20,7 +20,8 @@
 
 <!-- MOBILE MENU -->
 <nav class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+  <div class="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
+  <button class="mobile-close" type="button" onclick="closeMobileMenu()" aria-label="Close menu">✕</button>
   <a href="#about" onclick="closeMobileMenu()">About</a>
   <a href="#services" onclick="closeMobileMenu()">Services</a>
   <a href="#manpower" onclick="closeMobileMenu()">Manpower</a>
@@ -1120,9 +1121,18 @@
   const heroStats = document.querySelector('.hero-stats');
   if (heroStats) statsObserver.observe(heroStats);
 
-  // ===== MOBILE MENU =====
-  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
-  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  // ===== MOBILE MENU (global, robust) =====
+  window.openMobileMenu = function() {
+    var m = document.getElementById('mobileMenu');
+    if (m) { m.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  };
+  window.closeMobileMenu = function() {
+    var m = document.getElementById('mobileMenu');
+    if (m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+  };
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') window.closeMobileMenu();
+  });
 </script>
   <script src="chatbot.js" defer></script>
 </body>
