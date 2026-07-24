@@ -244,15 +244,24 @@ ul { list-style: none; }
 @keyframes fadeIn {
   from { opacity: 0; } to { opacity: 1; }
 }
+/* Reveal animation is gated behind html.js so content is ALWAYS visible if JS fails to run.
+   The inline <head> script adds 'js' to <html>; if it (or JS) never loads, items stay visible. */
 .reveal {
-  opacity: 0; transform: translateY(40px);
+  transform: translateY(40px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.reveal.visible, .reveal.revealed { opacity: 1; transform: translateY(0); }
-.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.reveal-left.visible, .reveal-left.revealed { opacity: 1; transform: translateX(0); }
-.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.reveal-right.visible, .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+html.js .reveal { opacity: 0; }
+html.js .reveal.visible, html.js .reveal.revealed { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease;
+}
+html.js .reveal-left { opacity: 0; }
+html.js .reveal-left.visible, html.js .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease;
+}
+html.js .reveal-right { opacity: 0; }
+html.js .reveal-right.visible, html.js .reveal-right.revealed { opacity: 1; transform: translateX(0); }
 
 /* ===== SECTION UTILITY ===== */
 .section { padding: 100px 5%; }
