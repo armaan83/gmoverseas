@@ -731,6 +731,19 @@ footer {
   color: rgba(255,255,255,0.5); font-size: 0.82rem; line-height: 1.8;
   margin-top: 16px; max-width: 260px;
 }
+/* ----- FOOTER LOGO (was invisible: no CSS rule existed) ----- */
+.footer-logo { margin-bottom: 4px; }
+.footer-logo-text {
+  font-family: 'Cormorant Garamond', serif; font-weight: 700;
+  font-size: 1.55rem; letter-spacing: 1px; color: var(--white); line-height: 1;
+}
+.footer-logo-text .logo-gm {
+  color: var(--gold); margin-right: 2px;
+}
+.footer-tagline {
+  color: var(--gold-light); font-size: 0.72rem; letter-spacing: 2px;
+  text-transform: uppercase; margin-top: 8px; font-weight: 500;
+}
 .footer-title {
   font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
   color: var(--gold); margin-bottom: 20px; font-weight: 500;
@@ -744,11 +757,12 @@ footer {
 .footer-links a::before { content: '→'; font-size: 0.7rem; color: var(--gold); }
 .footer-social { display: flex; gap: 10px; margin-top: 16px; }
 .social-btn {
-  width: 38px; height: 38px; border: 1px solid rgba(184,150,62,0.3);
+  width: 40px; height: 40px; border: 1px solid rgba(184,150,62,0.3);
   display: flex; align-items: center; justify-content: center;
   color: rgba(255,255,255,0.6); font-size: 0.9rem;
-  transition: all 0.3s; border-radius: 2px;
+  transition: all 0.3s; border-radius: 50%;
 }
+.social-btn svg { width: 18px; height: 18px; fill: currentColor; display: block; }
 .social-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
 .footer-bottom {
   display: flex; justify-content: space-between; align-items: center;
