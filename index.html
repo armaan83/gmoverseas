@@ -32,8 +32,6 @@
   <a href="#countries" onclick="closeMobileMenu()">Countries</a>
   <a href="#resources" onclick="closeMobileMenu()">Resources</a>
   <a href="#tools" onclick="closeMobileMenu()">Free Tools</a>
-  <a href="#process" onclick="closeMobileMenu()">Process</a>
-  <a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </nav>
 
@@ -49,13 +47,17 @@
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#manpower">Manpower</a></li>
-    <li><a href="#students">Students</a></li>
-    <li><a href="#countries">Countries</a></li>
+    <li class="nav-dropdown">
+      <a href="#services">Services <span class="caret">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#manpower"><span class="dd-ico">🏭</span> Manpower &amp; Recruitment</a></li>
+        <li><a href="#students"><span class="dd-ico">🎓</span> Student Admission</a></li>
+        <li><a href="#students"><span class="dd-ico">🧑‍💻</span> Student Internship</a></li>
+        <li><a href="#services"><span class="dd-ico">🛂</span> Visa Services</a></li>
+      </ul>
+    </li>
     <li><a href="#resources">Resources</a></li>
     <li><a href="#tools">Free Tools</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
   </ul>
   <div class="hamburger" onclick="openMobileMenu()">
@@ -168,10 +170,10 @@
   <div class="container">
     <div style="text-align:center" class="reveal">
       <div class="section-label" style="justify-content:center">What We Offer</div>
-      <h2 class="section-title title-light">Our Expert Services</h2>
+      <h2 class="section-title title-light">Our Visa &amp; Immigration Services</h2>
       <div class="gold-line" style="margin:20px auto 0"></div>
     </div>
-    <div class="services-grid">
+    <div class="services-grid services-grid-tiles">
       <div class="service-card reveal">
         <div class="service-number">01</div>
         <div class="service-icon">🛂</div>
@@ -243,43 +245,31 @@
 <!-- MANPOWER & RECRUITMENT -->
 <section class="section" id="manpower">
   <div class="container">
-    <div class="manpower-intro">
-      <div class="manpower-content">
-        <div class="section-label">Manpower &amp; Recruitment</div>
-        <h2 class="section-title title-dark">We Connect Indian<br>Talent with <em style="font-style:italic;color:var(--gold-light)">Europe</em></h2>
-        <div class="gold-line"></div>
-        <p class="section-desc">
-          GM Overseas is a reputed manpower consultancy that bridges the gap between skilled Indian professionals and European employers. We help companies across Europe find, screen, and hire top Indian talent — across industries, roles, and skill levels.
-        </p>
-        <p class="section-desc" style="margin-top: 16px;">
-          Whether you're a European employer looking for verified candidates or an Indian professional seeking a career abroad, we handle every step — from talent sourcing and documentation to work visa processing and onboarding support.
-        </p>
-        <div class="manpower-btns" style="display:flex;gap:16px;margin-top:24px;flex-wrap:wrap;">
-          <a href="#contact" class="btn-primary">Hire From India</a>
-          <a href="#contact" class="btn-secondary-outline">Find Jobs in Europe</a>
-        </div>
-      </div>
-      <div class="manpower-stats">
-        <div class="manpower-stat">
-          <div class="stat-big">214+</div>
-          <div class="stat-small">Candidates Placed</div>
-        </div>
-        <div class="manpower-stat">
-          <div class="stat-big">50+</div>
-          <div class="stat-small">European Employers</div>
-        </div>
-        <div class="manpower-stat">
-          <div class="stat-big">12+</div>
-          <div class="stat-small">Industry Sectors</div>
-        </div>
-        <div class="manpower-stat">
-          <div class="stat-big">10+</div>
-          <div class="stat-small">Years Recruiting</div>
-        </div>
+    <div style="text-align:center" class="reveal">
+      <div class="section-label" style="justify-content:center">Manpower &amp; Recruitment</div>
+      <h2 class="section-title title-dark">We Connect Indian<br>Talent with <em style="font-style:italic;color:var(--gold-light)">Europe</em></h2>
+      <div class="gold-line" style="margin:20px auto 0"></div>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">
+        GM Overseas is a reputed manpower consultancy that bridges the gap between skilled Indian professionals and European employers. We help companies across Europe find, screen, and hire top Indian talent — across industries, roles, and skill levels.
+      </p>
+      <p class="section-desc" style="margin:16px auto 0;">
+        Whether you're a European employer looking for verified candidates or an Indian professional seeking a career abroad, we handle every step — from talent sourcing and documentation to work visa processing and onboarding support.
+      </p>
+      <div class="manpower-btns" style="display:flex;gap:16px;margin-top:28px;flex-wrap:wrap;justify-content:center;">
+        <a href="#contact" class="btn-primary">Hire From India</a>
+        <a href="#contact" class="btn-secondary-outline">Find Jobs in Europe</a>
       </div>
     </div>
 
-    <!-- Manpower categories -->
+    <!-- Stat tiles -->
+    <div class="manpower-stats-tiles">
+      <div class="mstat-tile reveal"><div class="mstat-num">214+</div><div class="mstat-label">Candidates Placed</div></div>
+      <div class="mstat-tile reveal"><div class="mstat-num">50+</div><div class="mstat-label">European Employers</div></div>
+      <div class="mstat-tile reveal"><div class="mstat-num">12+</div><div class="mstat-label">Industry Sectors</div></div>
+      <div class="mstat-tile reveal"><div class="mstat-num">10+</div><div class="mstat-label">Years Recruiting</div></div>
+    </div>
+
+    <!-- Manpower categories as premium tiles -->
     <div class="manpower-grid">
       <div class="manpower-card reveal">
         <div class="manpower-icon">🏭</div>
@@ -313,42 +303,42 @@
       </div>
     </div>
 
-    <!-- Recruitment Process -->
+    <!-- Recruitment Process as premium numbered tiles -->
     <div class="process-section reveal">
-      <div style="text-align:center" class="">
+      <div style="text-align:center">
         <div class="section-label" style="justify-content:center">Our Recruitment Process</div>
         <h2 class="section-title title-light">End-to-End Talent Placement</h2>
         <div class="gold-line" style="margin:20px auto 0"></div>
       </div>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-num">1</div>
+      <div class="process-tiles">
+        <div class="process-tile">
+          <div class="step-badge">1</div>
           <div class="step-title">Requirement Analysis</div>
           <div class="step-desc">Understand employer's job roles, skills &amp; timelines</div>
         </div>
-        <div class="process-step">
-          <div class="step-num">2</div>
+        <div class="process-tile">
+          <div class="step-badge">2</div>
           <div class="step-title">Talent Sourcing</div>
           <div class="step-desc">Identify &amp; screen the best Indian candidates</div>
         </div>
-        <div class="process-step">
-          <div class="step-num">3</div>
+        <div class="process-tile">
+          <div class="step-badge">3</div>
           <div class="step-title">Interview Coordination</div>
           <div class="step-desc">Arrange interviews between employer &amp; shortlisted candidates</div>
         </div>
-        <div class="process-step">
-          <div class="step-num">4</div>
+        <div class="process-tile">
+          <div class="step-badge">4</div>
           <div class="step-title">Offer &amp; Contract</div>
           <div class="step-desc">Facilitate job offer, contract signing &amp; legal review</div>
         </div>
-        <div class="process-step">
-          <div class="step-num">5</div>
+        <div class="process-tile">
+          <div class="step-badge">5</div>
           <div class="step-title">Visa &amp; Work Permit</div>
           <div class="step-desc">Handle all work permit &amp; visa documentation for Europe</div>
         </div>
-        <div class="process-step">
-          <div class="step-num">6</div>
-          <div class="step-title">Onboarding 🎉</div>
+        <div class="process-tile">
+          <div class="step-badge">6</div>
+          <div class="step-title">Onboarding</div>
           <div class="step-desc">Pre-departure briefing &amp; relocation support</div>
         </div>
       </div>
