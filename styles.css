@@ -1320,8 +1320,9 @@ footer { background: linear-gradient(180deg, #0a1429 0%, #060c1a 100%); }
 .nav-dropdown .dropdown-menu a:hover { background: rgba(184,150,62,0.14); color: var(--gold-light) !important; }
 .nav-dropdown .dd-ico { font-size: 1rem; }
 .nav-dropdown:hover .dropdown-menu,
-.nav-dropdown:focus-within .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-.nav-dropdown:hover .caret { transform: rotate(180deg); color: var(--gold-light); }
+.nav-dropdown:focus-within .dropdown-menu,
+.nav-dropdown.open .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.nav-dropdown.open .caret { transform: rotate(180deg); color: var(--gold-light); }
 
 /* ----- generic secondary outline button (was missing base style) ----- */
 .btn-secondary-outline {
