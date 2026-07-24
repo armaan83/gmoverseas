@@ -346,12 +346,43 @@ h2.section-title {
 .feature-title { font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
 .feature-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
 
+/* ===== CENTERED SECTION INTROS (Manpower, Students, Countries) =====
+   These sections' intros had no rule, so they defaulted to left-aligned inside the
+   1160px container while other sections were centered. Center them for consistency.
+   (The Tools header is already centered via inline styles.) */
+#manpower .manpower-intro,
+#students .students-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#manpower .manpower-content,
+#students .students-content {
+  text-align: center;
+}
+#manpower .section-desc,
+#students .section-desc,
+#countries .section-desc {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#manpower .gold-line,
+#students .gold-line {
+  margin-left: auto;
+  margin-right: auto;
+}
+#manpower .manpower-btns {
+  justify-content: center;
+}
+#countries .countries-intro {
+  grid-template-columns: 1fr;
+  gap: 24px;
+  text-align: center;
+}
+
 /* ===== SERVICES ===== */
 #services { background: var(--navy); }
-.services-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
-  margin-top: 60px;
-}
 #students { background: var(--cream); }
 .students-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
