@@ -1126,3 +1126,148 @@ footer {
     font-size: 1.4rem !important;
   }
 }
+
+/* ============================================================
+   PREMIUM ENHANCEMENT LAYER
+   Same identity (navy + gold), elevated finish.
+   Appended so it overrides component rules without touching
+   the working structure or reveal failsafe below.
+   ============================================================ */
+:root {
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --gold-grad: linear-gradient(135deg, #b8963e 0%, #d4af5a 55%, #f0e0b0 100%);
+  --gold-grad-soft: linear-gradient(135deg, rgba(184,150,62,0.20), rgba(212,175,90,0.05));
+  --shadow-soft: 0 18px 44px -20px rgba(13,27,62,0.28);
+  --shadow-lift: 0 40px 80px -30px rgba(13,27,62,0.50);
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* Premium easing on every interactive surface */
+.service-card, .student-card, .testimonial-card, .resource-card,
+.manpower-card, .country-card, .tool-card-main, .tool-card-side,
+.btn-primary, .btn-outline, .btn-secondary-outline, .nav-cta, .form-submit,
+.social-btn, .about-feature, .process-step, .feat-item, .about-img-wrap img {
+  transition-timing-function: var(--ease);
+}
+
+/* ===== NAVBAR: always glass, refined ===== */
+#navbar {
+  background: rgba(13,27,62,0.35);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid rgba(184,150,62,0.16);
+  padding: 15px 5%;
+}
+#navbar.scrolled { background: rgba(13,27,62,0.82); }
+.nav-cta {
+  border-radius: 999px !important;
+  padding: 11px 26px !important;
+  box-shadow: 0 8px 22px -8px rgba(184,150,62,0.55);
+}
+
+/* ===== BUTTONS: pill + gold gradient ===== */
+.btn-primary {
+  border-radius: 999px;
+  background: var(--gold-grad);
+  box-shadow: 0 10px 26px -8px rgba(184,150,62,0.55);
+}
+.btn-primary:hover { box-shadow: 0 16px 36px -8px rgba(184,150,62,0.7); }
+.btn-outline { border-radius: 999px; border-color: rgba(255,255,255,0.32); }
+.btn-secondary-outline { border-radius: 999px; }
+
+/* ===== SECTION RHYTHM: more breathing room ===== */
+.section { padding: 120px 5%; }
+
+/* ===== GOLD LINES + LABELS: gradient ===== */
+.gold-line { background: var(--gold-grad); width: 64px; height: 3px; border-radius: 3px; }
+.section-label { color: var(--gold-light); letter-spacing: 5px; }
+.section-label::before { background: var(--gold-grad); width: 38px; height: 2px; }
+
+/* ===== ICON TILES: soft gradient chips ===== */
+.feature-icon, .manpower-icon, .resource-icon, .student-icon, .service-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.service-icon, .student-icon, .manpower-icon, .resource-icon, .feature-icon {
+  background: var(--gold-grad-soft);
+  border: 1px solid rgba(184,150,62,0.28);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+}
+.service-icon, .student-icon, .manpower-icon, .resource-icon {
+  width: 66px; height: 66px; flex-shrink: 0; border-radius: var(--radius-sm);
+  font-size: 1.9rem;
+}
+.service-icon { margin-bottom: 24px; }
+.manpower-icon { margin-bottom: 16px; }
+.resource-icon { margin-bottom: 16px; }
+.feature-icon { width: 48px; height: 48px; border-radius: 12px; font-size: 1.25rem; }
+
+/* ===== CARDS: rounded + layered shadow ===== */
+.service-card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(184,150,62,0.12);
+}
+.service-card:hover { box-shadow: var(--shadow-lift); }
+.student-card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  border-top: 4px solid var(--gold);
+}
+.student-card:hover { box-shadow: var(--shadow-lift); }
+.testimonial-card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(184,150,62,0.10);
+  border-bottom: 3px solid transparent;
+}
+.testimonial-card:hover { box-shadow: var(--shadow-lift); border-bottom-color: var(--gold); }
+.resource-card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+}
+.resource-card:hover { box-shadow: var(--shadow-lift); transform: translateY(-6px); }
+.manpower-card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  background: var(--white);
+  border: 1px solid rgba(184,150,62,0.12);
+  padding: 36px 28px;
+}
+.manpower-card:hover { box-shadow: var(--shadow-lift); transform: translateY(-6px); }
+.country-card { border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+
+/* ===== DARK SECTION DEPTH (radial gold glow, no clipping) ===== */
+#services { background: radial-gradient(900px 520px at 85% -10%, rgba(184,150,62,0.13), transparent 60%), var(--navy); }
+#why, #faq { background: radial-gradient(820px 520px at 12% -10%, rgba(184,150,62,0.11), transparent 55%), var(--navy); }
+#process { background: radial-gradient(900px 520px at 50% -20%, rgba(184,150,62,0.10), transparent 60%), var(--navy); }
+#why { background: radial-gradient(820px 520px at 12% -10%, rgba(184,150,62,0.11), transparent 55%), var(--navy); }
+
+/* ===== HERO depth glow ===== */
+#hero::after {
+  content: ''; position: absolute; top: -22%; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 620px; pointer-events: none; z-index: 1;
+  background: radial-gradient(circle, rgba(184,150,62,0.18), transparent 70%);
+  filter: blur(40px);
+}
+
+/* ===== ABOUT image polish ===== */
+.about-img-wrap img { border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+.about-img-badge { border-radius: var(--radius-sm); }
+
+/* ===== FORM polish ===== */
+.form-group input, .form-group select, .form-group textarea {
+  border-radius: 12px; box-shadow: 0 1px 2px rgba(13,27,62,0.04);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--gold); box-shadow: 0 0 0 4px rgba(184,150,62,0.14);
+}
+.form-submit { border-radius: 999px; background: var(--gold-grad); letter-spacing: 2px; }
+.form-submit:hover { background: var(--gold-grad); color: var(--navy); }
+.btn-download, .btn-service { border-radius: 999px; }
+
+/* ===== FOOTER polish ===== */
+footer { background: linear-gradient(180deg, #0a1429 0%, #060c1a 100%); }
+.social-btn { border-radius: 50%; }
