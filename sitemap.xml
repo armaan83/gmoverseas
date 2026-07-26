@@ -117,4 +117,12 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- New Article: Best European Countries for Indians 2026 -->
+  <url>
+    <loc>https://www.gm-overseas.com/best-european-countries-india-2026.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
