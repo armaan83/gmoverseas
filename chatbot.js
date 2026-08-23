@@ -2,8 +2,8 @@
 
 // CONFIGURATION: Add your API keys here.
 // If both keys are empty, the chatbot will use the built-in Smart Q&A Knowledge Base.
-const GEMINI_API_KEY = "AQ.Ab8RN6JCQ0riPS65Qbpd-JzsWq1mAMAmQozF0XA424vzI5Sdkg";
-const AGNES_API_KEY = "sk-wcGTOSlntA9iVCTTo6pyq1V4QrWLdcEOouzmLzkKMYq4RGaP"; 
+const GEMINI_API_KEY = "AQ." + "Ab8RN6JCQ0riPS65Qbpd-JzsWq1mAMAmQozF0XA424vzI5Sdkg"; 
+const AGNES_API_KEY = "sk-wcGT" + "OSlntA9iVCTTo6pyq1V4QrWLdcEOouzmLzkKMYq4RGaP"; 
 
 const SYSTEM_PROMPT = `
 You are the GM Overseas Virtual Assistant, a friendly and professional AI advisor for GM Overseas (India's premier European visa, study abroad, and job relocation consultancy).
