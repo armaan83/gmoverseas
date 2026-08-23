@@ -2,8 +2,8 @@
 
 // CONFIGURATION: Add your API keys here.
 // If both keys are empty, the chatbot will use the built-in Smart Q&A Knowledge Base.
-const GEMINI_API_KEY = "AQ.A" + "b8RN6Ji_q4rPnrdfHOqi76RG81ruQidiFWOpx9fCyTEifHtDg"; 
-const AGNES_API_KEY = "sk-wcGT" + "OSlntA9iVCTTo6pyq1V4QrWLdcEOouzmLzkKMYq4RGaP"; 
+const GEMINI_API_KEY = "AIzaSyA8RN6Ji_q4rPnrdfHOqi76RG81ruQidiFWOpx9fCyTEifHtDg";
+const AGNES_API_KEY = "sk-wcGTOSlntA9iVCTTo6pyq1V4QrWLdcEOouzmLzkKMYq4RGaP"; 
 
 const SYSTEM_PROMPT = `
 You are the GM Overseas Virtual Assistant, a friendly and professional AI advisor for GM Overseas (India's premier European visa, study abroad, and job relocation consultancy).
@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Case A: Call Gemini API if Key is provided
     if (GEMINI_API_KEY) {
       try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
