@@ -2,7 +2,7 @@
 
 // CONFIGURATION: Add your API keys here.
 // If both keys are empty, the chatbot will use the built-in Smart Q&A Knowledge Base.
-const GEMINI_API_KEY = "AIzaSyA8RN6Ji_q4rPnrdfHOqi76RG81ruQidiFWOpx9fCyTEifHtDg";
+const GEMINI_API_KEY = "AQ.Ab8RN6JCQ0riPS65Qbpd-JzsWq1mAMAmQozF0XA424vzI5Sdkg";
 const AGNES_API_KEY = "sk-wcGTOSlntA9iVCTTo6pyq1V4QrWLdcEOouzmLzkKMYq4RGaP"; 
 
 const SYSTEM_PROMPT = `
@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Case A: Call Gemini API if Key is provided
     if (GEMINI_API_KEY) {
       try {
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
