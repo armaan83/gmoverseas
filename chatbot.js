@@ -296,10 +296,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Backup Call to Agnes AI API (OpenAI-compatible)
-  async function callBackupAgnesAI(userMsg) {
+  async function callBackupAgnesAI(userMsg, modelName = "agnes-2.5-flash") {
     if (!AGNES_API_KEY) return null;
     try {
-      console.log("Attempting failover request to Agnes AI...");
+      console.log(`Attempting request to Agnes AI (${modelName})...`);
       const response = await fetch("https://apihub.agnes-ai.com/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
           "Authorization": `Bearer ${AGNES_API_KEY}`
         },
         body: JSON.stringify({
-          model: "agnes-1.5-flash", 
+          model: modelName,
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: userMsg }
@@ -352,56 +352,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const data = await response.json();
 
-        if (!response.ok) {
-          console.error('Gemini API Error Response:', data);
-          // Try Agnes AI backup
-          const backupText = await callBackupAgnesAI(userMsg);
+        if (response.ok && data.candidates && data.candidates[0] && data.candidates[0].content.parts[0].text) {
           hideTypingIndicator();
-          if (backupText) {
-            renderBotText(backupText);
-            return;
-          }
-          appendMessage('bot', "Connection issue: please verify your Gemini API key is correct and valid.", true);
-          appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
-          checkAndShowLeadForm();
-          return;
-        }
-
-        hideTypingIndicator();
-        if (data.candidates && data.candidates[0].content.parts[0].text) {
           renderBotText(data.candidates[0].content.parts[0].text);
-        } else {
-          // Try Agnes AI backup
-          const backupText = await callBackupAgnesAI(userMsg);
-          if (backupText) {
-            renderBotText(backupText);
-            return;
-          }
-          appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
           checkAndShowLeadForm();
-        }
-      } catch (error) {
-        console.error('Gemini API Error:', error);
-        // Try Agnes AI backup
-        const backupText = await callBackupAgnesAI(userMsg);
-        hideTypingIndicator();
-        if (backupText) {
-          renderBotText(backupText);
           return;
         }
-        appendMessage('bot', "I ran into a small connection issue, but I can help you directly!", true);
-        appendMessage('bot', KNOWLEDGE_BASE.fallback, true);
-        checkAndShowLeadForm();
+        // Gemini failed, fall through to Agnes
+      } catch (e) {
+        console.error('Gemini error:', e);
       }
-      return;
     }
 
-    // Case B: No Gemini key, but backup Agnes key is available
+    // Case B: Use Agnes AI as primary (always)
     if (AGNES_API_KEY) {
-      const backupText = await callBackupAgnesAI(userMsg);
+      const agnesText = await callBackupAgnesAI(userMsg, "agnes-2.5-flash");
       hideTypingIndicator();
-      if (backupText) {
-        renderBotText(backupText);
+      if (agnesText) {
+        renderBotText(agnesText);
+        checkAndShowLeadForm();
         return;
       }
     }
